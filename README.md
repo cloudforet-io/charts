@@ -1,2 +1,2 @@
 # charts
-Cloudforet Helm Charts Repository
+Cloudforet Helm Charts Repository.
