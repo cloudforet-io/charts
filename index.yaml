@@ -88,6 +88,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/identity-1.3.8/identity-1.3.8.tgz
     version: 1.3.8
+  inventory:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2022-05-23T05:20:34.981200126Z"
+    description: SpaceONE inventory Helm chart for Kubernetes
+    digest: a55847840a244c8a8318933d34434adfaa177ac32350d58ba178d8650b8f3bd7
+    name: inventory
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/inventory-1.3.8/inventory-1.3.8.tgz
+    version: 1.3.8
   spot-automation:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -99,4 +110,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/spot-automation-1.3.7-dev3/spot-automation-1.3.7-dev3.tgz
     version: 1.3.7-dev3
-generated: "2022-05-23T05:19:19.788890841Z"
+generated: "2022-05-23T05:20:34.981317328Z"
