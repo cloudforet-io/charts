@@ -154,6 +154,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/project-site-1.0.0/project-site-1.0.0.tgz
     version: 1.0.0
+  repository:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2022-05-23T05:33:23.879891513Z"
+    description: SpaceONE repository Helm chart for Kubernetes
+    digest: 80e1599ddf237258e760dc87a6351a02dc5eeb7a4db5f30bca5a1df48da0f416
+    name: repository
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/repository-1.3.7/repository-1.3.7.tgz
+    version: 1.3.7
   spot-automation:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -165,4 +176,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/spot-automation-1.3.7-dev3/spot-automation-1.3.7-dev3.tgz
     version: 1.3.7-dev3
-generated: "2022-05-23T05:31:49.353402549Z"
+generated: "2022-05-23T05:33:23.879900712Z"
