@@ -77,6 +77,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/docs-2.1.0/docs-2.1.0.tgz
     version: 2.1.0
+  identity:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2022-05-23T05:19:19.788882441Z"
+    description: SpaceONE identity Helm chart for Kubernetes
+    digest: 88e557f7a8447607b477130f696797b890cc867b4c2d02fc398d8db93b7fa583
+    name: identity
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/identity-1.3.8/identity-1.3.8.tgz
+    version: 1.3.8
   spot-automation:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -88,4 +99,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/spot-automation-1.3.7-dev3/spot-automation-1.3.7-dev3.tgz
     version: 1.3.7-dev3
-generated: "2022-05-23T05:17:42.781411803Z"
+generated: "2022-05-23T05:19:19.788890841Z"
