@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  billing:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2022-05-23T05:07:49.818137913Z"
+    description: SpaceONE billing Helm chart for Kubernetes
+    digest: 92291830fa9d16a218c2b9e16044bc53b5611f230472e53311663f01ec3a743d
+    name: billing
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/billing-1.3.7/billing-1.3.7.tgz
+    version: 1.3.7
   spot-automation:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -11,4 +22,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/spot-automation-1.3.7-dev3/spot-automation-1.3.7-dev3.tgz
     version: 1.3.7-dev3
-generated: "2022-05-23T01:10:54.428870993Z"
+generated: "2022-05-23T05:07:49.818458918Z"
