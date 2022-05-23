@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/billing-1.3.7/billing-1.3.7.tgz
     version: 1.3.7
+  board:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2022-05-23T05:10:01.254538127Z"
+    description: SpaceONE board Helm chart for Kubernetes
+    digest: fd48a1bbd3e5da28d47011fcc694e09c576fb9444d0ea2d11f9d28f5b4e62bf0
+    name: board
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/board-1.3.8/board-1.3.8.tgz
+    version: 1.3.8
   spot-automation:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -22,4 +33,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/spot-automation-1.3.7-dev3/spot-automation-1.3.7-dev3.tgz
     version: 1.3.7-dev3
-generated: "2022-05-23T05:07:49.818458918Z"
+generated: "2022-05-23T05:10:01.254544227Z"
