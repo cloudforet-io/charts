@@ -176,6 +176,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.10/secret-1.3.10.tgz
     version: 1.3.10
+  spaceone-initializer:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2022-05-23T05:38:53.78853331Z"
+    description: SpaceONE domain initializer Helm chart for Kubernetes
+    digest: 4b0f599ac5c79936ea3c50d7f63bc107336560fcc050e2edf0838d2027a2d872
+    name: spaceone-initializer
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spaceone-initializer-1.2.14/spaceone-initializer-1.2.14.tgz
+    version: 1.2.14
   spot-automation:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -187,4 +198,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/spot-automation-1.3.7-dev3/spot-automation-1.3.7-dev3.tgz
     version: 1.3.7-dev3
-generated: "2022-05-23T05:37:10.600815856Z"
+generated: "2022-05-23T05:38:53.78854971Z"
