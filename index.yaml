@@ -179,6 +179,106 @@ entries:
   spaceone:
   - apiVersion: v2
     appVersion: 1.9.7
+    created: "2022-05-26T12:28:04.994187523Z"
+    dependencies:
+    - condition: console.enabled
+      name: console
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: console-api.enabled
+      name: console-api
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: identity.enabled
+      name: identity
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: secret.enabled
+      name: secret
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: repository.enabled
+      name: repository
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: plugin.enabled
+      name: plugin
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: config.enabled
+      name: config
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: inventory.enabled
+      name: inventory
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: monitoring.enabled
+      name: monitoring
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: statistics.enabled
+      name: statistics
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: billing.enabled
+      name: billing
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: cost-analysis.enabled
+      name: cost-analysis
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: notification.enabled
+      name: notification
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: power-scheduler.enabled
+      name: power-scheduler
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: cost-saving.enabled
+      name: cost-saving
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: spot-automation.enabled
+      name: spot-automation
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: board.enabled
+      name: board
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: marketplace-assets.enabled
+      name: marketplace-assets
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: supervisor.enabled
+      name: supervisor
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: supervisor.enabled
+      name: spaceone-initializer
+      repository: https://spaceone-dev.github.io/charts
+      version: '>=1.0.0'
+    - condition: vault.enabled
+      name: vault
+      repository: ""
+      version: '>=0.1.0'
+    - condition: consul.enabled
+      name: consul
+      repository: https://helm.releases.hashicorp.com
+      version: '>=0.1.0'
+    description: A Helm chart for SpaceONE
+    digest: b4d5e40882938ad079b131201fc25b7d0879f4b44671e4d04cd54b7c5fc9d3ee
+    home: https://www.spaceone.org
+    name: spaceone
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spaceone-1.9.7/spaceone-1.9.7.tgz
+    version: 1.9.7
+  - apiVersion: v2
+    appVersion: 1.9.7
     created: "2022-05-26T06:51:28.226955691Z"
     dependencies:
     - condition: console.enabled
@@ -421,4 +521,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2022-05-26T06:51:28.226972391Z"
+generated: "2022-05-26T12:28:04.994215624Z"
