@@ -520,6 +520,16 @@ entries:
   spaceone-initializer:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2022-07-21T07:13:43.633271291Z"
+    description: SpaceONE domain initializer Helm chart for Kubernetes
+    digest: 0c18fb40825e45df4b34e5affd16b99b7ceef561a09b6ec51af916973847858f
+    name: spaceone-initializer
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spaceone-initializer-1.2.20/spaceone-initializer-1.2.20.tgz
+    version: 1.2.20
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2022-07-18T07:20:58.091456942Z"
     description: SpaceONE domain initializer Helm chart for Kubernetes
     digest: 5189ee4308a47e0b07ba6cf953950d5e6e3b7d8a8bdadc0e750d0c32d82ff198
@@ -611,4 +621,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2022-07-18T07:20:58.091496942Z"
+generated: "2022-07-21T07:13:43.633652694Z"
