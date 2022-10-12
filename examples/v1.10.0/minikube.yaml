@@ -1,0 +1,540 @@
+enabled: true
+
+# Service
+mongodb:
+    enabled: true
+redis:
+    enabled: true
+consul:
+    enabled: true
+    server:
+        replicas: 1
+    ui:
+        enabled: false
+console:
+  enabled: true
+  developer: false
+  name: console
+  replicas: 1
+  image:
+      name: spaceone/console
+      version: 1.10.0.5
+  imagePullPolicy: IfNotPresent
+
+  production_json:
+      CONSOLE_API:
+        ENDPOINT: http://localhost:8081
+      DOMAIN_NAME: spaceone
+      DOMAIN_NAME_REF: localhost
+      BILLING_ENABLED: []
+
+  pod:
+    spec: {}
+
+console-api:
+  enabled: true
+  developer: false
+  name: console-api
+  replicas: 1
+  image:
+      name: spaceone/console-api
+      version: 1.10.0
+  imagePullPolicy: IfNotPresent
+
+  production_json:
+      cors:
+      - http://*
+      - https://*
+      redis:
+          host: redis
+          port: 6379
+          db: 15
+      billingV2: []
+      logger:
+          handlers:
+          - type: console
+            level: debug
+          - type: file
+            level: info
+            format: json
+            path: "/var/log/spaceone/console-api.log"
+      escalation:
+        enabled: false
+        allowedDomainId: #root-domain
+        apiKey: #root-api-key
+  pod:
+    spec: {}
+
+identity:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/identity
+      version: 1.10.0.1
+    imagePullPolicy: Always
+
+    application_grpc:
+      HANDLERS:
+          authentication:
+          - backend: spaceone.core.handler.authentication_handler.AuthenticationGRPCHandler
+            uri: grpc://localhost:50051/v1/Domain/get_public_key
+          authorization:
+          - backend: spaceone.core.handler.authorization_handler.AuthorizationGRPCHandler
+            uri: grpc://localhost:50051/v1/Authorization/verify
+          mutation:
+          - backend: spaceone.core.handler.mutation_handler.SpaceONEMutationHandler
+
+      ENDPOINTS:
+      - service: identity
+        name: Identity Service
+        endpoint: grpc://identity:50051/v1
+      - service: inventory
+        name: Inventory Service
+        endpoint: grpc://inventory:50051/v1
+      - service: plugin
+        name: Plugin Manager
+        endpoint: grpc://plugin:50051/v1
+      - service: repository
+        name: Repository Service
+        endpoint: grpc://repository:50051/v1
+      - service: secret
+        name: Secret Manager
+        endpoint: grpc://secret:50051/v1
+      - service: monitoring
+        name: Monitoring Service
+        endpoint: grpc://monitoring:50051/v1
+      - service: config
+        name: Config Service
+        endpoint: grpc://config:50051/v1
+      - service: power_scheduler
+        name: Power Scheduler Service
+        endpoint: grpc://power-scheduler:50051/v1
+      - service: statistics
+        name: Statistics Service
+        endpoint: grpc://statistics:50051/v1
+      - service: billing
+        name: Billing Service
+        endpoint: grpc://billing:50051/v1
+
+    pod:
+        spec: {}
+
+secret:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/secret
+      version: 1.10.0
+    application_grpc:
+        BACKEND: ConsulConnector
+        CONNECTORS:
+            ConsulConnector:
+                host: spaceone-consul-server
+                port: 8500
+#        BACKEND: AWSSecretManagerConnector
+#        CONNECTORS:
+#            AWSSecretManagerConnector:
+#                aws_access_key_id: ___CHANGE_YOUR_ACCESS_KEY_ID___
+#                aws_secret_access_key: __CHANGE_YOUR_SECRET_ACCESS_KEY__
+#                region_name: __AWS_REGION_NAME__
+    volumeMounts:
+        application_grpc: []
+        application_scheduler: []
+        application_worker: []
+
+    pod:
+        spec: {}
+
+repository:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/repository
+      version: 1.10.0
+    application_grpc:
+#        ROOT_TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        ROOT_TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server
+            uri: root/api_key/TOKEN
+
+    pod:
+        spec: {}
+
+plugin:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/plugin
+      version: 1.10.0
+ 
+    scheduler: false
+    worker: false
+    application_scheduler:
+#        TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server
+            uri: root/api_key/TOKEN
+
+    pod:
+        spec: {}
+
+config:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/config
+      version: 1.10.0
+
+    pod:
+        spec: {}
+
+inventory:
+    enabled: true
+    replicas: 1
+    replicas_worker: 1
+    image:
+      name: spaceone/inventory
+      version: 1.10.0.6
+    scheduler: true
+    worker: true
+    application_grpc:
+#        TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server
+            uri: root/api_key/TOKEN
+        collect_queue: collector_q
+
+    application_scheduler:
+#        TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server
+            uri: root/api_key/TOKEN
+    application_worker:
+#        TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server
+            uri: root/api_key/TOKEN
+        HANDLERS:
+          authentication: []
+          authorization: []
+          mutation: []
+ 
+#
+    volumeMounts:
+        application_grpc: []
+        application_scheduler: []
+        application_worker: []
+
+    pod:
+        spec: {}
+
+######################################
+# if you want NLB for spacectl
+# change ClusterIP to LoadBalancer
+#####################################
+
+#    service:
+#      type: LoadBalancer
+#      annotations:
+#          service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+#          external-dns.alpha.kubernetes.io/hostname: inventory.example.com
+#      ports:
+#        - name: grpc
+#          port: 50051
+#          targetPort: 50051
+#          protocol: TCP
+#
+
+
+monitoring:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/monitoring
+      version: 1.10.0
+    application_grpc:
+      WEBHOOK_DOMAIN: https://alert.monitoring.example.com
+#      TOKEN: __CHANGE_YOUR_ROOT_TOKEN___
+      TOKEN_INFO:
+          protocol: consul
+          config:
+              host: spaceone-consul-server
+          uri: root/api_key/TOKEN
+
+    application_rest:
+#      TOKEN: __CHANGE_YOUR_ROOT_TOKEN___
+      TOKEN_INFO:
+          protocol: consul
+          config:
+              host: spaceone-consul-server
+          uri: root/api_key/TOKEN
+
+    application_scheduler:
+#      TOKEN: __CHANGE_YOUR_ROOT_TOKEN___
+      TOKEN_INFO:
+          protocol: consul
+          config:
+              host: spaceone-consul-server
+          uri: root/api_key/TOKEN
+
+    application_worker:
+      WEBHOOK_DOMAIN: https://alert.monitoring.example.com
+#      TOKEN: __CHANGE_YOUR_ROOT_TOKEN___
+      TOKEN_INFO:
+          protocol: consul
+          config:
+              host: spaceone-consul-server
+          uri: root/api_key/TOKEN
+
+    pod:
+        spec: {}
+
+statistics:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/statistics
+      version: 1.10.0
+ 
+    scheduler: false
+    worker: false
+    application_scheduler:
+#        TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server
+            uri: root/api_key/TOKEN
+
+    pod:
+        spec: {}
+
+notification:
+    enabled: true
+    replicas: 1
+    image:
+      name: public.ecr.aws/megazone/spaceone/notification
+      version: 1.10.0 
+
+    pod:
+        spec: {}
+
+cost-analysis:
+    enabled: false
+    scheduler: false
+    worker: true
+    replicas: 1
+    replicas_worker: 2
+    image:
+      name: public.ecr.aws/megazone/spaceone/cost-analysis
+      version: 1.10.0
+
+    # Overwrite scheduler config
+    application_scheduler:
+        TOKEN: <root_token>
+
+    application_grpc:
+        DEFAULT_EXCHANGE_RATE:
+            KRW: 1178.7
+            JPY: 114.2
+            CNY: 6.3
+
+    application_worker:
+        DEFAULT_EXCHANGE_RATE:
+            KRW: 1178.7
+            JPY: 114.2
+            CNY: 6.3
+
+    volumeMounts:
+        application: []
+        application_worker: []
+        application_scheduler: []
+        application_rest: []
+
+    pod:
+        spec: {}
+
+
+marketplace-assets:
+    enabled: false
+
+
+# include config/alb.yaml (for ALB)
+# include config/nlb.yaml (for NLB)
+supervisor:
+    enabled: true
+    image:
+      name: spaceone/supervisor
+      version: 1.10.0
+    application: {}
+    application_scheduler:
+        NAME: root
+        HOSTNAME: root-supervisor.svc.cluster.local
+        BACKEND: KubernetesConnector
+        CONNECTORS:
+            RepositoryConnector:
+                endpoint:
+                    v1: grpc://repository.spaceone.svc.cluster.local:50051
+            PluginConnector:
+                endpoint:
+                    v1: grpc://plugin.spaceone.svc.cluster.local:50051
+            KubernetesConnector:
+                namespace: root-supervisor
+                start_port: 50051
+                end_port: 50052
+                headless: true
+                replica:
+                    inventory.Collector: 1
+                    inventory.Collector?aws-ec2: 1
+                    inventory.Collector?aws-cloud-services: 1
+                    inventory.Collector?aws-power-state: 1
+                    monitoring.DataSource: 1
+
+#        TOKEN: ___CHANGE_YOUR_ROOT_TOKEN___ 
+        TOKEN_INFO:
+            protocol: consul
+            config:
+                host: spaceone-consul-server.spaceone.svc.cluster.local
+            uri: root/api_key/TOKEN
+
+    pod:
+        spec: {}
+
+ingress:
+    enabled: false
+
+spaceone-initializer:
+  enabled: true
+  image:
+      name: spaceone/spacectl
+      version: 1.10.0
+  main:
+    import:
+      - /root/spacectl/apply/root_domain.yaml
+      - /root/spacectl/apply/marketplace.yaml
+      - /root/spacectl/apply/user_domain.yaml
+      - /root/spacectl/apply/role.yaml
+      - /root/spacectl/apply/statistics.yaml
+    var:
+      domain:
+        root: root
+        user: spaceone
+      default_language: ko
+      default_timezone: Asia/Seoul
+      domain_owner:
+        id: admin
+        password: Admin123!@#
+      user:
+        id: root_api_key
+      consul_server: spaceone-consul-server
+      marketplace_endpoint: grpc://repository.portal.spaceone.dev:50051
+      project_manager_policy_id: policy-managed-project-manager
+      project_viewer_policy_id: policy-managed-project-viewer
+      domain_admin_policy_id: policy-managed-domain-admin
+      domain_viewer_policy_id: policy-managed-domain-viewer
+    tasks: []
+
+#######################################
+# TYPE 1. global variable (for docdb) 
+#######################################
+global:
+    namespace: spaceone
+    supervisor_namespace: root-supervisor
+    backend:
+        sidecar: []
+        volumes: []
+    frontend:
+        sidecar: []
+        volumes: []
+
+    shared_conf:
+        HANDLERS:
+            authentication:
+            - backend: spaceone.core.handler.authentication_handler.AuthenticationGRPCHandler
+              uri: grpc://identity:50051/v1/Domain/get_public_key
+            authorization:
+            - backend: spaceone.core.handler.authorization_handler.AuthorizationGRPCHandler
+              uri: grpc://identity:50051/v1/Authorization/verify
+            mutation:
+            - backend: spaceone.core.handler.mutation_handler.SpaceONEMutationHandler
+        CONNECTORS:
+            IdentityConnector:
+                endpoint:
+                    v1: grpc://identity:50051
+            SecretConnector:
+                endpoint:
+                    v1: grpc://secret:50051
+            RepositoryConnector:
+                endpoint:
+                    v1: grpc://repository:50051
+            PluginConnector:
+                endpoint:
+                    v1: grpc://plugin:50051
+            ConfigConnector:
+                endpoint:
+                    v1: grpc://config:50051
+            InventoryConnector:
+                endpoint:
+                    v1: grpc://inventory:50051
+            MonitoringConnector:
+                endpoint:
+                    v1: grpc://monitoring:50051
+            StatisticsConnector:
+                endpoint:
+                    v1: grpc://statistics:50051
+            BillingConnector:
+                endpoint:
+                    v1: grpc://billing:50051
+            NotificationConnector:
+                endpoint:
+                    v1: grpc://notification:50051
+            PowerSchedulerConnector:
+                endpoint:
+                    v1: grpc://power-scheduler:50051
+        CACHES:
+            default:
+                backend: spaceone.core.cache.redis_cache.RedisCache
+                host: redis
+                port: 6379
+                db: 0
+                encoding: utf-8
+                socket_timeout: 10
+                socket_connect_timeout: 10
+#######################################
+# TYPE 2. global variable (for mongodb cluster)
+#######################################
+#global:
+#    namespace: spaceone
+#    supervisor_namespace: root-supervisor
+#    backend:
+#        sidecar:
+#            - name: mongos
+#              image: mongo:4.4.0-bionic
+#              command: [ 'mongos', '--config', '/mnt/mongos.yml', '--bind_ip_all' ]
+#              volumeMounts:
+#                - name: mongos-conf
+#                  mountPath: /mnt/mongos.yml
+#                  subPath: mongos.yml
+#                  readOnly: true
+#                - name: mongo-shard-key
+#                  mountPath: /opt/mongos/mongo-shard.pem
+#                  subPath: mongo-shard.pem
+#                  readOnly: true
+#        volumes:
+#            - name: mongo-shard-key
+#              secret:
+#                  defaultMode: 0400
+#                  secretName: mongo-shard-key
+#            - name: mongos-conf
+#              configMap:
+#                  name: mongos-conf
