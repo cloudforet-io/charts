@@ -128,7 +128,7 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 ```shell
 migrate.py 1.10.1 -f ./sample_migration_config.yml -d
 ```
-- document : <>
+- document : https://github.com/cloudforet-io/db-migration
 
 ## Upgrade helm chart
 
