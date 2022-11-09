@@ -69,12 +69,10 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 # Upgrade
 ## Changed Configuration
 ### image versions
-- 1.10.2
-    - console: 1.10.2.1
-    - console-api: 1.10.2.1
-    - identity: 1.10.2.2
-    - file-manager: 1.10.2.1
-
+- 1.10.3
+    - console: 1.10.3.1
+    - cost-analysis: 1.10.3.1
+    - inventory: 1.10.3.1
 ## Upgrade helm chart
 
 ~~~
