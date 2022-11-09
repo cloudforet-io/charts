@@ -196,6 +196,14 @@ monitoring:
           plugin_info:
             plugin_id: plugin-57773973639a
             provider: google_cloud
+        - name: AWS CloudTrail
+          plugin_info:
+            plugin_id: plugin-aws-cloudtrail-mon-datasource
+            provider: aws
+        - name: Azure Activity Log
+          plugin_info:
+            plugin_id: plugin-azure-activity-log-mon-datasource
+            provider: azure
 
     application_rest:
 #      TOKEN: __CHANGE_YOUR_ROOT_TOKEN___
@@ -326,6 +334,19 @@ cost-analysis:
 
     pod:
         spec: {}
+
+board:
+    enabled: true
+    grpc: true
+    scheduler: false
+    worker: false
+    replicas: 1
+    image:
+      name: public.ecr.aws/megazone/spaceone/board
+      version: 1.10.3
+
+    pod:
+      spec: {}
 
 file-manager:
     enabled: true

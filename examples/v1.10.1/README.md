@@ -72,7 +72,25 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 - 1.10.1
     - console: 1.10.1.4
 
-### New Service
+### new service
+- [ADD] board
+```diff
++board:
++    enabled: true
++    grpc: true
++    scheduler: false
++    worker: false
++    replicas: 1
++    image:
++      name: public.ecr.aws/megazone/spaceone/board
++      version: 1.10.1
++
++    pod:
++      spec:
++        nodeSelector:
++          Category: core
+```
+- [ADD] file-manager
 ```diff
 +file-manager:
 +    enabled: true
@@ -92,6 +110,25 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 +        spec: {}
 ```
 
+### value update
+- [ADD] monitoring.application_grpc.INSTALLED_DATA_SOURCE_PLUGINS
+```diff
++       - name: AWS CloudTrail
++        plugin_info:
++           plugin_id: plugin-aws-cloudtrail-mon-datasource
++           provider: aws
++       - name: Azure Activity Log
++        plugin_info:
++           plugin_id: plugin-azure-activity-log-mon-datasource
++           provider: azure
+```
+
+### DB Patch
+- command 
+```shell
+migrate.py 1.10.1 -f ./sample_migration_config.yml -d
+```
+- document : <>
 
 ## Upgrade helm chart
 

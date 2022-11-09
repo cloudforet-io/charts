@@ -75,6 +75,13 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
     - identity: 1.10.2.2
     - file-manager: 1.10.2.1
 
+### DB Patch
+- command 
+```shell
+migrate.py 1.10.2 -f ./sample_migration_config.yml -d
+```
+- document : <>
+
 ## Upgrade helm chart
 
 ~~~

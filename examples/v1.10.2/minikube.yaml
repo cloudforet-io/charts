@@ -364,6 +364,19 @@ cost-analysis:
     pod:
         spec: {}
 
+board:
+    enabled: true
+    grpc: true
+    scheduler: false
+    worker: false
+    replicas: 1
+    image:
+      name: public.ecr.aws/megazone/spaceone/board
+      version: 1.10.2
+
+    pod:
+      spec: {}
+
 file-manager:
     enabled: true
     grpc: true
