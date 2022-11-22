@@ -73,6 +73,15 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
     - console: 1.10.3.1
     - cost-analysis: 1.10.3.1
     - inventory: 1.10.3.1
+    - identity: 1.10.3.1
+
+## DB Patch
+- command
+```
+migrate.py 1.10.2 -f ./sample_migration_config.yml -d
+```
+- document : https://github.com/cloudforet-io/db-migration
+
 ## Upgrade helm chart
 
 ~~~
