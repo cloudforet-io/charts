@@ -114,11 +114,11 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 - [ADD] monitoring.application_grpc.INSTALLED_DATA_SOURCE_PLUGINS
 ```diff
 +       - name: AWS CloudTrail
-+        plugin_info:
++         plugin_info:
 +           plugin_id: plugin-aws-cloudtrail-mon-datasource
 +           provider: aws
 +       - name: Azure Activity Log
-+        plugin_info:
++         plugin_info:
 +           plugin_id: plugin-azure-activity-log-mon-datasource
 +           provider: azure
 ```
