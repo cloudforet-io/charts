@@ -123,6 +123,30 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 +           provider: azure
 ```
 
+- [ADD] identity.application_grpc.ENDPOINTS
+```diff
+      ENDPOINTS:
+      (..omit..)
++     - service: board
++       name: Board Service
++       endpoint: grpc+ssl://board.own.your.domain.com:443/v1
++     - service: file_manager
++       name: File Manager
++       endpoint: grpc+ssl://file-manager.own.your.domain.com:443/v1
+```
+
+- [ADD] identity.application_grpc.INTERNAL_ENDPOINTS
+```diff
+      INTERNAL_ENDPOINTS:
+      (..omit..)
++     - service: board
++       name: Board Service
++       endpoint: grpc://board.spaceone.svc.cluster.local:50051/v1
++     - service: file_manager
++       name: File Manager
++       endpoint: grpc://file-manager.spaceone.svc.cluster.local:50051/v1
+```
+
 ### DB Patch
 - command 
 ```shell
