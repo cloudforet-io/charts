@@ -23,6 +23,77 @@ identity:
 
     pod:
         spec: {}
+        
+    application_grpc:
+        ENDPOINTS:
+            - service: identity
+              name: Identity Service
+              endpoint: grpc+ssl://identity.own.your.domain.com:443/v1
+            - service: inventory
+              name: Inventory Service
+              endpoint: grpc+ssl://inventory.own.your.domain.com:443/v1
+            - service: repository
+              name: Repository Service
+              endpoint: grpc+ssl://repository.own.your.domain.com:443/v1
+            - service: secret
+              name: Secret Service
+              endpoint: grpc+ssl://secret.own.your.domain.com:443/v1
+            - service: monitoring
+              name: Monitoring Service
+              endpoint: grpc+ssl://monitoring.own.your.domain.com:443/v1
+            - service: config
+              name: Config Service
+              endpoint: grpc+ssl://config.own.your.domain.com:443/v1
+            - service: statistics
+              name: Statistics Service
+              endpoint: grpc+ssl://statistics.own.your.domain.com:443/v1
+            - service: notification
+              name: Notification Service
+              endpoint: grpc+ssl://notification.own.your.domain.com:443/v1
+            - service: cost_analysis
+              name: Cost Analysis Service
+              endpoint: grpc+ssl://cost-analysis.own.your.domain.com:443/v1
+            - service: board
+              name: Board Service
+              endpoint: grpc+ssl://board.own.your.domain.com:443/v1
+            - service: file_manager
+              name: File Manager
+              endpoint: grpc+ssl://file-manager.own.your.domain.com:443/v1
+            
+        INTERNAL_ENDPOINT:
+            - service: identity
+              name: Identity Service
+              endpoint: grpc://identity.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: inventory
+              name: Inventory Service
+              endpoint: grpc://inventory.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: repository
+              name: Repository Service
+              endpoint: grpc://repository.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: secret
+              name: Secret Service
+              endpoint: grpc://secret.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: monitoring
+              name: Monitoring Service
+              endpoint: grpc://monitoring.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: config
+              name: Config Service
+              endpoint: grpc://config.dev.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: statistics
+              name: Statistics Service
+              endpoint: grpc://statistics.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: notification
+              name: Notification Service
+              endpoint: grpc://notification.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: cost_analysis
+              name: Cost Analysis Service
+              endpoint: grpc://cost-analysis.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: board
+              name: Board Service
+              endpoint: grpc://board.{spaceone namespace}.svc.cluster.local:50051/v1
+            - service: file_manager
+              name: File Manager
+              endpoint: grpc://file-manager.{spaceone namespace}.svc.cluster.local:50051/v1
 
 secret:
     enabled: true
