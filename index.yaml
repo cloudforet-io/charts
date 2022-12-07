@@ -35,6 +35,16 @@ entries:
   config:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2022-12-07T11:06:58.877397803Z"
+    description: SpaceONE config Helm chart for Kubernetes
+    digest: 23ae8f124a9c47a44e5cfe62668ff9a1b0aaf72f3d3ccdb57e66a67b96e3a17b
+    name: config
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/config-1.3.8/config-1.3.8.tgz
+    version: 1.3.8
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2022-05-23T05:12:00.864189646Z"
     description: SpaceONE config Helm chart for Kubernetes
     digest: f69097b8d3df93b0e1bbcc7a3e119862bf665db9f4a9bf5feb5041a469d44693
@@ -1764,4 +1774,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2022-12-07T11:02:06.523523485Z"
+generated: "2022-12-07T11:06:58.877569105Z"
