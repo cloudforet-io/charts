@@ -5,7 +5,7 @@ console:
   replicas: 1
   image:
       name: public.ecr.aws/megazone/spaceone/console
-      version: 1.10.4
+      version: 1.10.4.3
   imagePullPolicy: IfNotPresent
 
   # For production.json (nodejs)
@@ -20,8 +20,6 @@ console:
     CONSOLE_API:
         ENDPOINT: https://console.api.example.com
     CONTACT_LINK: <enter_your_site_url_or_email> # Change the contact us link of sign in page
-    BILLING_ENABLED:
-    - <domain_id>
 
 #    GTAG_ID: UA-111111111-1
 #    AMCHARTS_LICENSE:
@@ -64,7 +62,7 @@ console-api:
   replicas: 1
   image:
       name: public.ecr.aws/megazone/spaceone/console-api
-      version: 1.10.4
+      version: 1.10.4.1
   imagePullPolicy: IfNotPresent
 
 ###############################################

@@ -18,7 +18,7 @@ console:
   replicas: 1
   image:
       name: spaceone/console
-      version: 1.10.4
+      version: 1.10.4.3
   imagePullPolicy: IfNotPresent
 
   production_json:
@@ -26,7 +26,6 @@ console:
         ENDPOINT: http://localhost:8081
       DOMAIN_NAME: spaceone
       DOMAIN_NAME_REF: localhost
-      BILLING_ENABLED: []
 
   pod:
     spec: {}
@@ -38,7 +37,7 @@ console-api:
   replicas: 1
   image:
       name: spaceone/console-api
-      version: 1.10.4
+      version: 1.10.4.1
   imagePullPolicy: IfNotPresent
 
   production_json:
@@ -404,7 +403,7 @@ supervisor:
     enabled: true
     image:
       name: spaceone/supervisor
-      version: 1.10.4
+      version: 1.10.4.1
     application: {}
     application_scheduler:
         NAME: root
