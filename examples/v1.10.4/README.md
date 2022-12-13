@@ -75,8 +75,8 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
     - supervisor: 1.10.4.1
     - monitoring: 1.10.4.2
     - board: 1.10.4.1
-    - cost-analysis: 1.10.4.2
-    - inventory: 1.10.4.1
+    - cost-analysis: 1.10.4.3
+    - inventory: 1.10.4.2
 
 ## DB Patch
 - command
