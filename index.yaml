@@ -211,6 +211,16 @@ entries:
   docs:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-12-19T00:49:26.788605403Z"
+    description: Cloudforet Open-Source Project Site Helm chart for Kubernetes
+    digest: 030dbf13b74d29ceefeb672606bc1163fe38d283fa07e1e1d2134984cd2d35a7
+    name: docs
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/docs-2.1.1/docs-2.1.1.tgz
+    version: 2.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-05-23T05:17:42.781406503Z"
     description: SpaceONE Open-Source Project Site Helm chart for Kubernetes
     digest: d17084b4f600d06198deab36370d2e1744fb4622526fcaf2a8c421cd9e61202e
@@ -2560,4 +2570,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2022-12-15T06:17:02.416282216Z"
+generated: "2022-12-19T00:49:26.789009205Z"
