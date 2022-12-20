@@ -571,6 +571,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/service_portal_api-1.0.0/service_portal_api-1.0.0.tgz
     version: 1.0.0
+  spacectl:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-12-20T01:43:15.005760585Z"
+    description: A spacectl chart for Kubernetes
+    digest: e86ca943bc1037e3b7a2e8ef4b9b18b2a68e2b1532e5bad9d3182cab4dfdc55a
+    name: spacectl
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spacectl-0.1.0/spacectl-0.1.0.tgz
+    version: 0.1.0
   spaceone:
   - apiVersion: v2
     appVersion: 1.10.4
@@ -2610,4 +2621,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2022-12-19T01:39:52.692279469Z"
+generated: "2022-12-20T01:43:15.00615289Z"
