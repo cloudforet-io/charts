@@ -1,0 +1,50 @@
+###############################
+# DEFAULT 
+###############################
+enabled: true
+developer: false
+name: docs
+replicas: 1
+image:
+    name: pyengin/docs
+    version: 0.1.20221213.164753
+imagePullPolicy: IfNotPresent
+
+resources:
+    requests:
+        memory: "128Mi"
+        cpu: "25m"
+    limits:
+        memory: "256Mi"
+        cpu: "50m"
+
+imagePullSecrets: 
+  - name: {secret_name_for_credential}
+
+service:
+    type: ClusterIP
+    annotations:
+        nil: nil
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+          protocol: TCP
+        - name: https
+          port: 443
+          targetPort: 80
+          protocol: TCP
+
+ingress:
+    enabled: false
+
+global:
+    namespace: {name_space}
+    serviceAccountName: {service_account_name}
+    common_env:
+      - name: http_proxy
+        value: http://{proxy_server_address}:{proxy_port}
+      - name: https_proxy
+        value: http://{proxy_server_address}:{proxy_port}
+      - name: no_proxy
+        value: .svc.cluster.local,localhost,{cluster_ip},board,config,console,console-api,console-api-v2,cost-analysis,dashboard,docs,file-manager,identity,inventory,marketplace-assets,monitoring,notification,plugin,repository,secret,statistics,supervisor
