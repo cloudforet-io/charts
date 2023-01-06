@@ -41,10 +41,3 @@ ingress:
 global:
     namespace: {name_space}
     serviceAccountName: {service_account_name}
-    common_env:
-      - name: http_proxy
-        value: http://{proxy_server_address}:{proxy_port}
-      - name: https_proxy
-        value: http://{proxy_server_address}:{proxy_port}
-      - name: no_proxy
-        value: .svc.cluster.local,localhost,{cluster_ip},board,config,console,console-api,console-api-v2,cost-analysis,dashboard,docs,file-manager,identity,inventory,marketplace-assets,monitoring,notification,plugin,repository,secret,statistics,supervisor
