@@ -1,0 +1,43 @@
+###############################
+# DEFAULT 
+###############################
+enabled: true
+developer: false
+name: docs
+replicas: 1
+image:
+    name: pyengin/docs
+    version: 0.1.20221213.164753
+imagePullPolicy: IfNotPresent
+
+resources:
+    requests:
+        memory: "128Mi"
+        cpu: "25m"
+    limits:
+        memory: "256Mi"
+        cpu: "50m"
+
+imagePullSecrets: 
+  - name: {secret_name_for_credential}
+
+service:
+    type: ClusterIP
+    annotations:
+        nil: nil
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+          protocol: TCP
+        - name: https
+          port: 443
+          targetPort: 80
+          protocol: TCP
+
+ingress:
+    enabled: false
+
+global:
+    namespace: {name_space}
+    serviceAccountName: {service_account_name}

@@ -1,0 +1,1033 @@
+enabled: true
+image:
+    name: alpine
+    version: 3.3
+
+resources:
+    requests:
+        memory: "128Mi"
+        cpu: "100m"
+    limits:
+        memory: "256Mi"
+        cpu: "200m"
+
+imagePullSecrets: 
+  - name: {secret_name_for_credential}
+
+# Service
+mongodb:
+    enabled: false
+redis:
+    enabled: true
+    image: 
+      name: redis:latest
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        requests:
+            memory: "128Mi"
+            cpu: "100m"
+        limits:
+            memory: "256Mi"
+            cpu: "200m"
+
+consul:
+    enabled: false
+
+identity:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/identity
+      version: 1.10.4
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_grpc:
+      HANDLERS:
+          authentication:
+          - backend: spaceone.core.handler.authentication_handler.AuthenticationGRPCHandler
+            uri: grpc://localhost:50051/v1/Domain/get_public_key
+          - backend: spaceone.core.handler.authentication_api_key_handler.AuthenticationAPIKeyHandler
+            uri: grpc://localhost:50051/v1/APIKey/get
+          authorization:
+          - backend: spaceone.core.handler.authorization_handler.AuthorizationGRPCHandler
+            uri: grpc://localhost:50051/v1/Authorization/verify
+          mutation:
+          - backend: spaceone.core.handler.mutation_handler.SpaceONEMutationHandler
+      ENDPOINTS:
+      - service: identity
+        name: Identity Service
+        endpoint: grpc+ssl://identity.api.{your_domain}:443/v1
+      - service: inventory
+        name: Inventory Service
+        endpoint: grpc+ssl://inventory.api.{your_domain}:443/v1
+      - service: repository
+        name: Repository Service
+        endpoint: grpc+ssl://repository.api.{your_domain}:443/v1
+      - service: secret
+        name: Secret Service
+        endpoint: grpc+ssl://secret.api.{your_domain}:443/v1
+      - service: monitoring
+        name: Monitoring Service
+        endpoint: grpc+ssl://monitoring.api.{your_domain}:443/v1
+      - service: config
+        name: Config Service
+        endpoint: grpc+ssl://config.api.{your_domain}:443/v1
+      - service: statistics
+        name: Statistics Service
+        endpoint: grpc+ssl://statistics.api.{your_domain}:443/v1
+      - service: notification
+        name: Notification Service
+        endpoint: grpc+ssl://notification.api.{your_domain}:443/v1
+      - service: cost_analysis
+        name: Cost Analysis Service
+        endpoint: grpc+ssl://cost-analysis.api.{your_domain}:443/v1
+      - service: board
+        name: Board Service
+        endpoint: grpc+ssl://board.api.{your_domain}:443/v1
+      - service: file_manager
+        name: File Manager
+        endpoint: grpc+ssl://file-manager.api.{your_domain}:443/v1
+      INTERNAL_ENDPOINTS:
+      - service: identity
+        name: Identity Service
+        endpoint: grpc://identity.{name_space}.svc.cluster.local:50051/v1
+      - service: inventory
+        name: Inventory Service
+        endpoint: grpc://inventory.{name_space}.svc.cluster.local:50051/v1
+      - service: repository
+        name: Repository Service
+        endpoint: grpc://repository.{name_space}.svc.cluster.local:50051/v1
+      - service: secret
+        name: Secret Service
+        endpoint: grpc://secret.{name_space}.svc.cluster.local:50051/v1
+      - service: monitoring
+        name: Monitoring Service
+        endpoint: grpc://monitoring.{name_space}.svc.cluster.local:50051/v1
+      - service: config
+        name: Config Service
+        endpoint: grpc://config.dev.{name_space}.svc.cluster.local:50051/v1
+      - service: statistics
+        name: Statistics Service
+        endpoint: grpc://statistics.{name_space}.svc.cluster.local:50051/v1
+      - service: notification
+        name: Notification Service
+        endpoint: grpc://notification.{name_space}.svc.cluster.local:50051/v1
+      - service: cost_analysis
+        name: Cost Analysis Service
+        endpoint: grpc://cost-analysis.{name_space}.svc.cluster.local:50051/v1
+      - service: board
+        name: Board Service
+        endpoint: grpc://board.{name_space}.svc.cluster.local:50051/v1
+      - service: file_manager
+        name: File Manager
+        endpoint: grpc://file-manager.{name_space}.svc.cluster.local:50051/v1
+      LOG:
+        filters:
+          exclude:
+            rules:
+              tnx_method:
+              - Domain.get_public_key
+              - Authorization.verify
+
+    volumeMounts:
+        application: []
+        application_grpc: []
+        application_worker: []
+        application_scheduler: []
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+secret:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/secret
+      version: 1.10.4.1
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_grpc:
+        BACKEND: MongoDBConnector
+        CONNECTORS:
+            MongoDBConnector:
+                host: {host}
+                port: 27017
+                username: {mongo_user}
+                password: {mongo_password}
+    volumeMounts:
+        application: []
+        application_grpc: []
+        application_scheduler: []
+        application_worker: []
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+repository:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/repository
+      version: 1.10.4.1
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_grpc:
+      REGISTRY_URL_MAP:
+        HARBOR: {harbor_server_address}
+      CONNECTORS:
+        HarborConnector:
+          base_url: 'http://{harbor_server_address}'
+          token: <token>
+      HANDLER_EXCLUDE_APIS:
+        authentication:
+        - Repository.list
+        - Repository.get
+        - Plugin.list
+        - Plugin.get
+        - Plugin.get_versions
+        - Schema.list
+        - Schema.get
+        - Policy.list
+        - Policy.get
+        authorization:
+        - Repository.list
+        - Repository.get
+        - Plugin.list
+        - Plugin.get
+        - Plugin.get_versions
+        - Schema.list
+        - Schema.get
+        - Policy.list
+        - Policy.get
+        mutation:
+        - Repository.list
+        - Repository.get
+        - Plugin.list
+        - Plugin.get
+        - Plugin.get_versions
+        - Schema.list
+        - Schema.get
+        - Policy.list
+        - Policy.get
+
+    volumeMounts:
+        application: []
+        application_grpc: []
+        application_worker: []
+        application_scheduler: []
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+plugin:
+    enabled: true
+    scheduler: true
+    worker: true
+    replicas: 1
+    image:
+      name: spaceone/plugin
+      version: 1.10.4.2
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        worker:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_scheduler:
+        TOKEN: <replace_token>
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+config:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/config
+      version: 1.10.4
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+inventory:
+    enabled: true
+    scheduler: true
+    worker: true
+    replicas: 1
+    replicas_worker: 1
+    image:
+      name: spaceone/inventory
+      version: 1.10.4.10
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        worker:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_grpc:
+        TOKEN: <replace_token>
+        collect_queue: collector_q
+
+    application_scheduler:
+        TOKEN: <replace_token>
+    application_worker:
+        TOKEN: <replace_token>
+        HANDLERS:
+          authentication: []
+          authorization: []
+          mutation: []
+        DELETE_EXCLUDE_DOMAINS: []
+
+    volumeMounts:
+        application: []
+        application_grpc: []
+        application_worker: []
+        application_scheduler: []
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+monitoring:
+    enabled: true
+    developer: false
+    grpc: true
+    scheduler: true
+    worker: true
+    rest: true
+    replicas: 1
+    replicas_rest: 1
+    replicas_worker: 1
+    image:
+      name: spaceone/monitoring
+      version: 1.10.4.2
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        rest:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        worker:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_grpc:
+        WEBHOOK_DOMAIN: https://monitoring-webhook.api.{your_domain}
+        TOKEN: <replace_token>
+        INSTALLED_DATA_SOURCE_PLUGINS:
+          - name: AWS CloudWatch
+            plugin_info:
+              plugin_id: plugin-aws-cloudwatch-mon-datasource
+              provider: aws
+          - name: Azure Monitor
+            plugin_info:
+              plugin_id: plugin-azure-activity-log-mon-datasource
+              provider: azure
+          - name: Google Cloud Monitoring
+            plugin_info:
+              plugin_id: plugin-google-stackdriver-mon-datasource
+              provider: google_cloud
+          - name: AWS CloudTrail
+            plugin_info:
+              plugin_id: plugin-aws-cloudtrail-mon-datasource # CloudTrail 설치 확인 필요
+              provider: aws
+          - name: Azure Activity Log
+            plugin_info:
+              plugin_id: plugin-azure-activity-log-mon-datasource
+              provider: azure
+
+    application_rest:
+        CONSOLE_DOMAIN: https://{domain_name}.{your_domain}
+        TOKEN: <replace_token>
+
+    application_scheduler:
+        TOKEN: <replace_token>
+
+    application_worker:
+        CONSOLE_DOMAIN: https://{domain_name}.{your_domain}
+        WEBHOOK_DOMAIN: https://monitoring-webhook.api.{your_domain}
+        TOKEN: <replace_token>
+
+    sidecar:
+        rest_web:
+            image:
+                name: nginx
+                version: stable
+                imagePullPolicy: IfNotPresent
+            resources:
+                requests:
+                    memory: "128Mi"
+                    cpu: "100m"
+                limits:
+                    memory: "256Mi"
+                    cpu: "200m"
+
+    volumeMounts:
+        application: []
+        application_grpc: []
+        application_worker: []
+        application_scheduler: []
+
+    service:
+        grpc:
+            type: ClusterIP
+            annotations: {}
+            ports:
+                - name: grpc
+                  port: 50051
+                  targetPort: 50051
+                  protocol: TCP
+        rest:
+            type: ClusterIP
+            annotations: {}
+            ports:
+                - name: rest
+                  port: 80
+                  targetPort: 80
+                  protocol: TCP
+
+    ingress:
+      rest:
+        enabled: false
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+statistics:
+    enabled: true
+    scheduler: true
+    worker: true
+    replicas: 1
+    image:
+      name: spaceone/statistics
+      version: 1.10.4
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "512Mi"
+                cpu: "100m"
+            limits:
+                memory: "1024Mi"
+                cpu: "200m"
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        worker:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_scheduler:
+        TOKEN: <replace_token>
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+cost-analysis:
+    enabled: true
+    scheduler: true
+    worker: true
+    replicas: 1
+    replicas_worker: 1
+    image:
+      name: spaceone/cost-analysis
+      version: 1.10.4.2
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        worker:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_grpc:
+        DEFAULT_EXCHANGE_RATE:
+            KRW: 1307.8
+            JPY: 136.8
+
+    application_scheduler:
+        TOKEN: <replace_token>
+
+    application_worker:
+        DEFAULT_EXCHANGE_RATE:
+            KRW: 1307.8
+            JPY: 136.8
+
+    volumeMounts:
+        application_grpc: []
+        application_worker: []
+        application_scheduler: []
+        application_rest: []
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+notification:
+    enabled: true
+    replicas: 1
+    image:
+      name: spaceone/notification
+      version: 1.10.4
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+        worker:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application_worker:
+        DEFAULT_QUOTA:
+            plugin-slack-noti-protocol: 
+              month: -1
+              day: -1
+            plugin-telegram-noti-protocol:
+              month: -1
+              day: -1
+            plugin-email-noti-protocol:
+              month: -1
+              day: -1
+
+    application_scheduler:
+        TOKEN: <replace_token>
+
+    application_grpc:
+        DEFAULT_QUOTA:
+            plugin-slack-noti-protocol: 
+              month: -1
+              day: -1
+            plugin-telegram-noti-protocol:
+              month: -1
+              day: -1
+            plugin-email-noti-protocol:
+              month: -1
+              day: -1
+        INSTALLED_PROTOCOL_PLUGINS:
+          - name: Slack
+            plugin_info:
+              plugin_id: slack-notification-protocol
+              options: {}
+              schema: slack_webhook
+          - name: Telegram
+            plugin_info:
+              plugin_id: plugin-telegram-noti-protocol
+              options: {}
+              schema: telegram_auth_token
+          - name: Email
+            plugin_info:
+              plugin_id: plugin-email-noti-protocol
+              options: {}
+              secret_data:
+                smtp_host: {smtp.host.com}
+                smtp_port: "587"
+                user: {user}
+                password: {password}
+              schema: email_smtp
+
+    volumeMounts:
+        application: []
+        application_grpc: []
+        application_worker: []
+        application_scheduler: []
+
+    volumes:
+        - name: timezone
+          hostPath:
+              path: /usr/share/zoneinfo/Asia/Seoul
+        - name: log-volume
+          emptyDir: {}
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+board:
+    enabled: true
+    grpc: true
+    scheduler: false
+    worker: false
+    replicas: 1
+    image:
+      name: spaceone/board
+      version: 1.10.4.2
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+file-manager:
+    enabled: false
+    grpc: false
+    scheduler: false
+    worker: false
+
+dashboard: 
+    enabled: false
+    grpc: false
+    scheduler: false
+    worker: false
+    replicas: 1
+    image:
+      name: spaceone/dashboard
+      version: 1.10.4.1
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        grpc:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+console-api-v2:
+    enabled: true
+    scheduler: false
+    worker: false
+    rest: true
+    replicas: 1
+    image:
+      name: spaceone/console-api-v2
+      version: 1.10.4.1
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        rest:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    sidecar:
+        rest_web:
+            image:
+                name: nginx
+                version: stable
+                imagePullPolicy: IfNotPresent
+            resources:
+                requests:
+                    memory: "128Mi"
+                    cpu: "100m"
+                limits:
+                    memory: "256Mi"
+                    cpu: "200m"
+
+    service:
+      rest:
+          type: ClusterIP
+          annotations:
+              nil: nil
+          ports:
+              - name: http
+                port: 80
+                targetPort: 80
+                protocol: TCP
+              - name: https
+                port: 443
+                targetPort: 80
+                nodePort: null
+                protocol: TCP
+
+#   pod:
+#      spec:
+#        nodeSelector:
+#          Category: core
+
+supervisor:
+    enabled: true
+    image:
+      name: spaceone/supervisor
+      version: 1.10.4.7
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        scheduler:
+            requests:
+                memory: "128Mi"
+                cpu: "100m"
+            limits:
+                memory: "256Mi"
+                cpu: "200m"
+
+    application: {}
+    application_scheduler:
+        TOKEN: <replace_token>
+        NAME: root
+        HOSTNAME: {name_space}.svc.cluster.local
+        BACKEND: KubernetesConnector
+        CONNECTORS:
+            RepositoryConnector:
+                endpoint:
+                    v1: grpc://repository.{name_space}.svc.cluster.local:50051
+            PluginConnector:
+                endpoint:
+                    v1: grpc://plugin.{name_space}.svc.cluster.local:50051
+            KubernetesConnector:
+                service_account: {service_account_name}
+                namespace: {name_space}
+                imagePullSecrets: 
+                  - name: {secret_name_for_credential}
+                resources:
+                    requests:
+                        memory: "512Mi"
+                        cpu: "100m"
+                    limits:
+                        memory: "1536Mi"
+                        cpu: "200m"
+                env:
+                  - name: HTTP_PROXY
+                    value: http://{proxy_server_address}:{proxy_port}
+                  - name: HTTPS_PROXY
+                    value: http://{proxy_server_address}:{proxy_port}
+                  - name: no_proxy
+                    value: .svc.cluster.local,localhost,{cluster_ip},board,config,console,console-api,console-api-v2,cost-analysis,dashboard,docs,file-manager,identity,inventory,marketplace-assets,monitoring,notification,plugin,repository,secret,statistics,supervisor
+                start_port: 50051
+                end_port: 50052
+                headless: true
+                replica:
+                    inventory.Collector: 4
+                    monitoring.DataSource: 4
+                    cost_analysis.DataSource: 4
+                # nodeSelector:
+                #     Category: supervisor
+
+    sidecar:
+        kubectl_proxy:
+            image:
+                name: spaceone/kubectl-proxy
+                version: latest
+                imagePullPolicy: IfNotPresent
+            resources:
+                requests:
+                    memory: "128Mi"
+                    cpu: "100m"
+                limits:
+                    memory: "256Mi"
+                    cpu: "200m"
+        redis:
+            image:
+                name: redis
+                version: latest
+                imagePullPolicy: IfNotPresent
+            resources:
+                requests:
+                    memory: "128Mi"
+                    cpu: "100m"
+                limits:
+                    memory: "256Mi"
+                    cpu: "200m"
+
+    # pod:
+    #   spec:
+    #     nodeSelector:
+    #       Category: supervisor
+
+marketplace-assets:
+    enabled: true
+    developer: false
+    replicas: 1
+    image:
+        name: spaceone/marketplace-assets
+        version: 1.10.4.1
+
+    imagePullSecrets: 
+      - name: {secret_name_for_credential}
+
+    resources:
+        requests:
+            memory: "128Mi"
+            cpu: "100m"
+        limits:
+            memory: "256Mi"
+            cpu: "200m"
+
+    service:
+      type: ClusterIP
+      annotations:
+        nil: nil
+      ports:
+        - name: http
+          port: 80
+          targetPort: 80
+          protocol: TCP
+        - name: https
+          port: 443
+          targetPort: 80
+          protocol: TCP
+
+power-scheduler:
+    enabled: false
+
+billing:
+    enabled: false
+
+cost-saving:
+    enabled: false
+
+spot-automation:
+    enabled: false
+
+spaceone-initializer:
+    enabled: false
+
+global:
+    namespace: {name_space}
+    supervisor_namespace: {name_space}
+    serviceAccountName: {service_account_name}
+    backend:
+        sidecar: []
+        volumes: []
+    frontend:
+        sidecar: []
+        volumes: []

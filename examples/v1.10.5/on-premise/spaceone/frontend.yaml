@@ -1,0 +1,128 @@
+###############################
+# This is for frontend test
+###############################
+console:
+  enabled: true
+  developer: false
+  name: console
+  replicas: 1
+  image:
+      name: spaceone/console
+      version: 1.10.4.6
+  imagePullPolicy: IfNotPresent
+  imagePullSecrets: 
+    - name: {secret_name_for_credential}
+
+  resources:
+      requests:
+          memory: "128Mi"
+          cpu: "25m"
+      limits:
+          memory: "256Mi"
+          cpu: "50m"
+
+  production_json:
+    CONSOLE_API:
+        ENDPOINT: https://console.api.{your_domain}
+    GTAG_ID: "DISABLED"
+    GTM_ID: "DISABLED"
+    DOMAIN_NAME_REF: hostname
+    ASSET_PATH:
+      https://spaceone-custom-assets.s3.ap-northeast-2.amazonaws.com: https://assets.{your_domain}
+    DOCS:
+    - label: User Guide
+      link: https://docs.{your_domain}/docs/guides
+
+  # Ingress
+  ingress:
+    enabled: false
+
+  service:
+    type: ClusterIP
+    annotations:
+        nil: nil
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+          nodePort: null
+          protocol: TCP
+        - name: https
+          port: 443
+          targetPort: 80
+          nodePort: null
+          protocol: TCP
+
+###############################
+# Console-API
+###############################
+console-api:
+  enabled: true
+  developer: false
+  name: console-api
+  replicas: 1
+  image:
+      name: spaceone/console-api
+      version: 1.10.4.1
+  imagePullPolicy: IfNotPresent
+
+  resources:
+      requests:
+          memory: "512Mi"
+          cpu: "300m"
+      limits:
+          memory: "1024Mi"
+          cpu: "600m"
+
+  nginx_proxy:
+      image:
+          name: nginx
+          version: stable
+          imagePullPolicy: IfNotPresent
+      resources:
+          requests:
+              memory: "128Mi"
+              cpu: "25m"
+          limits:
+              memory: "256Mi"
+              cpu: "50m"
+
+  imagePullSecrets: 
+    - name: {secret_name_for_credential}
+
+  production_json:
+      cors:
+      - https://*.{your_domain}
+      - https://*.{your_domain}:8080
+      redis:
+          host: redis
+          port: 6379
+          db: 15
+      logger:
+          handlers:
+          - type: console
+            level: debug
+          - type: file
+            level: info
+            format: json
+            path: "/var/log/spaceone/console-api.log"
+
+  # Ingress
+  ingress:
+    enabled: false
+
+  service:
+    type: ClusterIP
+    annotations:
+        nil: nil
+    ports:
+        - name: http
+          port: 80
+          targetPort: 80
+          nodePort: null
+          protocol: TCP
+        - name: https
+          port: 443
+          targetPort: 80
+          nodePort: null
+          protocol: TCP

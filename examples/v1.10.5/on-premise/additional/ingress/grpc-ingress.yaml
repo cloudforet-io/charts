@@ -1,0 +1,91 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grpc
+spec:
+  ingressClassName: {ingress_class_name}
+  tls:
+  - hosts:
+    - "*.api.{your_domain}"
+    secretName: {tls_secret_name}
+  rules:
+  - host: inventory.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: inventory
+            port:
+              number: 50051
+  - host: statistics.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: statistics
+            port:
+              number: 50051
+  - host: monitoring.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: monitoring
+            port:
+              number: 50051
+  - host: cost-analysis.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cost-analysis
+            port:
+              number: 50051
+  - host: notification.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: notification
+            port:
+              number: 50051
+  - host: config.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: config
+            port:
+              number: 50051
+  - host: repository.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: repository
+            port:
+              number: 50051
+  - host: board.api.{your_domain}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: board
+            port:
+              number: 50051

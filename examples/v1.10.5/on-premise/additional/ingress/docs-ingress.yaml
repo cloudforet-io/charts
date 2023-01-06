@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docs
+spec:
+  ingressClassName: {ingress_class_name}
+  tls:
+  - hosts:
+    - "*.{your_domain}"
+    secretName: {tls_secret_name}
+  rules:
+  - host: "docs.{your_domain}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: docs
+            port:
+              number: 80
