@@ -250,6 +250,16 @@ entries:
   dashboard:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-01-09T08:45:05.690284366Z"
+    description: SpaceONE dashboard Helm chart for Kubernetes
+    digest: 28c827b56ddad9046bea720abacb98a7f07f70c558551691163c9282ceac642b
+    name: dashboard
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/dashboard-1.3.10/dashboard-1.3.10.tgz
+    version: 1.3.10
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2022-12-07T11:16:00.870771559Z"
     description: SpaceONE dashboard Helm chart for Kubernetes
     digest: 3ff8927a26e957d77676d285da50ed0e55535aee4b150e0978f349248c39f806
@@ -2691,4 +2701,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-01-09T08:43:46.111995556Z"
+generated: "2023-01-09T08:45:05.69084628Z"
