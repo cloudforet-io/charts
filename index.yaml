@@ -455,6 +455,16 @@ entries:
   marketplace-assets:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-01-09T08:52:47.944844452Z"
+    description: SpaceONE marketplace-assets Helm chart for Kubernetes
+    digest: 362afa8067cf4ecd11c19c88dcddad8e94c6dd8cb2c23001c7558f93eea17fff
+    name: marketplace-assets
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/marketplace-assets-1.1.6/marketplace-assets-1.1.6.tgz
+    version: 1.1.6
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2022-12-07T11:21:22.172835829Z"
     description: SpaceONE marketplace-assets Helm chart for Kubernetes
     digest: a3b0aa72fc5ff8acfe29b2c3832384901dd7da990df13a27b15333feffc26df9
@@ -2731,4 +2741,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-01-09T08:50:24.391181699Z"
+generated: "2023-01-09T08:52:47.945611521Z"
