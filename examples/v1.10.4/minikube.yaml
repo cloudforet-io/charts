@@ -450,7 +450,7 @@ spaceone-initializer:
   enabled: true
   image:
       name: spaceone/spacectl
-      version: 1.10.4
+      version: 1.10.4.2
   main:
     import:
       - /root/spacectl/apply/root_domain.yaml
