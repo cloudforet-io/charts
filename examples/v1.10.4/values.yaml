@@ -29,7 +29,7 @@ secret:
     replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/secret
-      version: 1.10.4
+      version: 1.10.4.1
     application_grpc:
         BACKEND: ConsulConnector
         CONNECTORS:
@@ -55,7 +55,7 @@ repository:
     replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/repository
-      version: 1.10.4
+      version: 1.10.4.1
 
     pod:
         spec: {}
@@ -65,7 +65,7 @@ plugin:
     replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/plugin
-      version: 1.10.4
+      version: 1.10.4.2
  
     scheduler: true
     worker: true
@@ -96,7 +96,7 @@ inventory:
     replicas_worker: 2
     image:
       name: public.ecr.aws/megazone/spaceone/inventory
-      version: 1.10.4.1
+      version: 1.10.4.10
     scheduler: true
     worker: true
     application_grpc:
@@ -308,7 +308,7 @@ cost-analysis:
     replicas_worker: 2
     image:
       name: public.ecr.aws/megazone/spaceone/cost-analysis
-      version: 1.10.4.2
+      version: 1.10.4.7
 
     # Overwrite scheduler config
     application_scheduler:
@@ -343,7 +343,7 @@ board:
     replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/board
-      version: 1.10.4.1
+      version: 1.10.4.2
 
     pod:
       spec: {}
@@ -365,6 +365,12 @@ file-manager:
     pod:
         spec: {}
 
+dashboard: 
+    enabled: false
+
+console-api-v2:
+    enabled: false
+
 marketplace-assets:
     enabled: false
 
@@ -374,7 +380,7 @@ supervisor:
     enabled: true
     image:
       name: public.ecr.aws/megazone/spaceone/supervisor
-      version: 1.10.4.1
+      version: 1.10.4.7
     application: {}
     application_scheduler:
         NAME: root

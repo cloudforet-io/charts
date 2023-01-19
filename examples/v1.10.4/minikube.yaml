@@ -18,7 +18,7 @@ console:
   replicas: 1
   image:
       name: spaceone/console
-      version: 1.10.4.3
+      version: 1.10.4.6
   imagePullPolicy: IfNotPresent
 
   production_json:
@@ -123,7 +123,7 @@ secret:
     replicas: 1
     image:
       name: spaceone/secret
-      version: 1.10.4
+      version: 1.10.4.1
     application_grpc:
         BACKEND: ConsulConnector
         CONNECTORS:
@@ -166,7 +166,7 @@ plugin:
     replicas: 1
     image:
       name: spaceone/plugin
-      version: 1.10.4
+      version: 1.10.4.2
  
     scheduler: false
     worker: false
@@ -197,7 +197,7 @@ inventory:
     replicas_worker: 1
     image:
       name: spaceone/inventory
-      version: 1.10.4.1
+      version: 1.10.4.10
     scheduler: true
     worker: true
     application_grpc:
@@ -336,7 +336,7 @@ cost-analysis:
     replicas_worker: 2
     image:
       name: public.ecr.aws/megazone/spaceone/cost-analysis
-      version: 1.10.4.2
+      version: 1.10.4.7
 
     # Overwrite scheduler config
     application_scheduler:
@@ -371,7 +371,7 @@ board:
     replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/board
-      version: 1.10.4.1
+      version: 1.10.4.2
 
     pod:
       spec: {}
@@ -393,9 +393,14 @@ file-manager:
     pod:
         spec: {}
 
-marketplace-assets:
+dashboard: 
     enabled: false
 
+console-api-v2:
+    enabled: false
+
+marketplace-assets:
+    enabled: false
 
 # include config/alb.yaml (for ALB)
 # include config/nlb.yaml (for NLB)
@@ -403,7 +408,7 @@ supervisor:
     enabled: true
     image:
       name: spaceone/supervisor
-      version: 1.10.4.1
+      version: 1.10.4.7
     application: {}
     application_scheduler:
         NAME: root
