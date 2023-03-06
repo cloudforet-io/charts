@@ -20,6 +20,7 @@ console:
     CONSOLE_API:
         ENDPOINT: https://console.api.example.com
     CONTACT_LINK: <enter_your_site_url_or_email> # Change the contact us link of sign in page
+    DASHBOARD_ENABLED: []
 
 #    GTAG_ID: UA-111111111-1
 #    AMCHARTS_LICENSE:
