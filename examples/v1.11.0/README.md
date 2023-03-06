@@ -177,7 +177,7 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
 +    replicas: 4
 +    image:
 +      name: public.ecr.aws/megazone/spaceone/dashboard
-+      version: 1.11.0.0
++      version: 1.11.0
 ```
 
 ### value update
