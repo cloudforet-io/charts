@@ -27,7 +27,7 @@ console:
       CONSOLE_API:
         ENDPOINT: http://localhost:8081
       DOMAIN_NAME: spaceone
-      DOMAIN_NAME_REF: localhost
+      DOMAIN_NAME_REF: spaceone
       DASHBOARD_ENABLED: []
 
   pod:
@@ -401,17 +401,17 @@ dashboard:
     grpc: true
     scheduler: false
     worker: false
-    replicas: 4
+    replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/dashboard
-      version: 1.11.0.0
+      version: 1.11.0
 
 console-api-v2:
     enabled: true
     scheduler: false
     worker: false
     rest: true
-    replicas: 4
+    replicas: 1
     image:
       name: public.ecr.aws/megazone/spaceone/console-api-v2
       version: 1.11.0
@@ -499,7 +499,7 @@ spaceone-initializer:
   enabled: true
   image:
       name: spaceone/spacectl
-      version: 1.11.0
+      version: 1.11.0.5
   main:
     import:
       - /root/spacectl/apply/root_domain.yaml
