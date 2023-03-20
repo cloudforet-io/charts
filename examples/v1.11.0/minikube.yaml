@@ -511,8 +511,10 @@ spaceone-initializer:
       domain:
         root: root
         user: spaceone
-      default_language: ko
-      default_timezone: Asia/Seoul
+      default_language: en
+      default_timezone: UTC
+#      default_language: ko
+#      default_timezone: Asia/Seoul
       domain_owner:
         id: admin
         password: Admin123!@#
