@@ -26,6 +26,8 @@ console:
   production_json:
       CONSOLE_API:
         ENDPOINT: http://localhost:8081
+      CONSOLE_API_V2:
+        ENDPOINT: http://localhost:8082
       DOMAIN_NAME: spaceone
       DOMAIN_NAME_REF: spaceone
       DASHBOARD_ENABLED: []
