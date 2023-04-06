@@ -186,6 +186,8 @@ helm install spaceone -f values.yaml -f frontend.yaml -f database.yaml spaceone/
   production_json:
     CONSOLE_API:
         ENDPOINT: https://console.api.example.com
++   CONSOLE_API_V2:
++       ENDPOINT: https://console-v2.api.example.com
     CONTACT_LINK: <enter_your_site_url_or_email> # Change the contact us link of sign in page
     DASHBOARD_ENABLED:
 +   - <user_domain_id>
