@@ -773,6 +773,16 @@ entries:
     version: 1.0.0
   spacectl:
   - apiVersion: v2
+    appVersion: 1.0.3
+    created: "2023-05-03T07:57:38.796306451Z"
+    description: A spacectl chart for Kubernetes
+    digest: 842ebc6d70e919b2d7c572fd8faac82f5095f688e72595edffbbe29cc77f39ad
+    name: spacectl
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spacectl-1.0.3/spacectl-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2023-05-03T05:50:01.621891652Z"
     description: A spacectl chart for Kubernetes
@@ -813,98 +823,6 @@ entries:
     - https://github.com/cloudforet-io/charts/releases/download/spacectl-0.1.0/spacectl-0.1.0.tgz
     version: 0.1.0
   spaceone:
-  - apiVersion: v2
-    appVersion: 1.11.1
-    created: "2023-05-03T07:37:19.072960802Z"
-    dependencies:
-    - condition: console.enabled
-      name: console
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: console-api.enabled
-      name: console-api
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: identity.enabled
-      name: identity
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: secret.enabled
-      name: secret
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: repository.enabled
-      name: repository
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: plugin.enabled
-      name: plugin
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: config.enabled
-      name: config
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: inventory.enabled
-      name: inventory
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: monitoring.enabled
-      name: monitoring
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: statistics.enabled
-      name: statistics
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: cost-analysis.enabled
-      name: cost-analysis
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: notification.enabled
-      name: notification
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: board.enabled
-      name: board
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: file-manager.enabled
-      name: file-manager
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: dashboard.enabled
-      name: dashboard
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: console-api-v2.enabled
-      name: console-api-v2
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: supervisor.enabled
-      name: supervisor
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: marketplace-assets.enabled
-      name: marketplace-assets
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: docs.enabled
-      name: docs
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    - condition: spacectl.enabled
-      name: spacectl
-      repository: https://cloudforet-io.github.io/charts
-      version: '>=1.0.0'
-    description: A Helm chart for SpaceONE
-    digest: bbf617fd5ab7af10f8ba4805d499ed45f4a02404b2995b343dd6692246cbad72
-    home: https://www.spaceone.org
-    name: spaceone
-    type: application
-    urls:
-    - https://github.com/cloudforet-io/charts/releases/download/spaceone-1.11.2-dev2/spaceone-1.11.2-dev2.tgz
-    version: 1.11.2-dev2
   - apiVersion: v2
     appVersion: 1.11.1
     created: "2023-05-03T05:52:01.625417318Z"
@@ -3675,4 +3593,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-05-03T07:37:19.073387907Z"
+generated: "2023-05-03T07:57:38.79672465Z"
