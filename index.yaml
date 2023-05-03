@@ -774,6 +774,16 @@ entries:
   spacectl:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-05-03T05:48:38.692549409Z"
+    description: A spacectl chart for Kubernetes
+    digest: f6548443bfae6b67b355100ba52a34e9c5c4b6545a757dd85d6f25f98609de10
+    name: spacectl
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spacectl-0.1.2/spacectl-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-01-09T09:01:18.451326752Z"
     description: A spacectl chart for Kubernetes
     digest: 2e603a7e41e55cf37581e268c962c6bda01775ea93ef532457546061ac8bfeee
@@ -3471,4 +3481,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-05-03T05:24:59.221257079Z"
+generated: "2023-05-03T05:48:38.693910912Z"
