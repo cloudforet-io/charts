@@ -152,9 +152,9 @@ global:
 ```
 
 For more advanced configuration, please refer the [documents](docs/parameters.md) and examples.
-- [All Values](examples/values/all.yaml)
-- [External Database](examples/values/external_db.yaml)
-- [One Namespace](examples/values/one_namespace.yaml)
+- [All Values](examples/all_values.yaml)
+- [External Database](examples/external_db_values.yaml)
+- [One Namespace](examples/one_namespace_values.yaml)
 
 
 After that, execute the following command.
@@ -170,30 +170,47 @@ kubectl get pod -n spaceone
 
 If all pods are in `Running` state, the setup is complete.
 
-## Configure Ingress
-After the installation, you need to configure the ingress to access the console.
+### 7) Configure Ingress
+After the installation, you need to configure the ingress to access the console and API.
 
-### AWS Environment
-Before creating the ingress, you need to prepare for the following.
-- EKS Cluster 
-  - ALB Ingress Controller
-  - External DNS
-- Route53
-- ACM
+- [AWS Environment](docs/aws/README.md)
+- [On-premise Environment](docs/on_premise/README.md)
 
-After that, create the ingress.
-- Console: [console_ingress.yaml](examples/ingress/aws/console_ingress.yaml)
-- gRPC: [grpc_ingress.yaml](examples/ingress/aws/grpc_ingress.yaml)
-- Monitoring Webhook: [monitoring_webhook_ingress.yaml](examples/ingress/aws/monitoring_webhook_ingress.yaml)
+## Upgrade
+You can upgrade the cloudforet from the previous version.
 
+### 1) Upgrade the Helm Chart
 ```bash
-kubectl apply -f console_ingress.yaml -n spaceone
-kubectl apply -f grpc_ingress.yaml -n spaceone
-kubectl apply -f monitoring_webhook_ingress.yaml -n spaceone
+helm repo update
+helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
 ```
 
-### On-premise Environment
-Before creating the ingress, you need to prepare for the following.
-- Kubernetes Cluster
-  - Nginx Ingress Controller
-  - Cert-Manager (Optional)
+### 2) Patch the database
+
+The database schema has not been changed, so you don't need to patch the database. 
+
+## Uninstall
+You can uninstall the cloudforet with the following command.
+
+### 1) Delete the Helm Chart
+```bash
+helm delete cloudforet -n spaceone
+helm delete cloudforet-initializer -n spaceone
+```
+
+### 2) Delete the Ingress
+```bash
+kubectl delete ingress --all -n spaceone
+```
+
+### 4) Delete all plugins
+```bash
+kubectl delete deployment --all -n spaceone-plugin
+kubectl delete service --all -n spaceone-plugin
+```
+
+### 5) Delete cloudforet namespaces
+```bash
+kubectl delete namespace spaceone
+kubectl delete namespace spaceone-plugin
+```
