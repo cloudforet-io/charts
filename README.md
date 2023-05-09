@@ -6,7 +6,7 @@ A Helm Chart for Cloudforet `1.11.3`.
 - Helm 3.2.0+
 - MongoDB 5.0+ (optional)
 
-#### Docker Images
+### Docker Images
 You can download the docker images from [Docker Hub](https://hub.docker.com/u/spaceone).
 
 | Image Name                  | Version             | Required |
@@ -40,28 +40,28 @@ You can download the docker images from [Docker Hub](https://hub.docker.com/u/sp
 ## Installation
 You can install the Cloudforet using the following the steps.
 
-#### 1) Add Helm Repository
+### 1) Add Helm Repository
 ```bash
 helm repo add cloudforet https://cloudforet-io.github.io/charts
 helm repo update
 helm search repo
 ```
 
-#### 2) Create Namespaces
+### 2) Create Namespaces
 ```bash
 kubectl create ns spaceone
 kubectl create ns spaceone-plugin
 ```
 If you want to use only one namespace, you don't create the `spaceone-plugin` namespace.
 
-#### 3) Create Role and RoleBinding
+### 3) Create Role and RoleBinding
 First, download the [rbac.yaml](examples/rbac.yaml) file and execute the following command.
 
 ```bash
 kubectl apply -f rbac.yaml -n spaceone-plugin
 ```
 
-#### 3) Install Cloudforet Chart
+### 3) Install Cloudforet Chart
 ```bash
 helm install cloudforet cloudforet/spaceone -n spaceone
 ```
@@ -107,9 +107,9 @@ statistics-worker-68d646fc7-knbdr         1/1     Running            0          
 supervisor-scheduler-6744657cb6-tpf78     2/2     Running            0             59s
 ```
 
-> Warning: Scheduler pods are in `CrashLoopBackOff` or `Error` state. This is because the setup is not complete.
+> Scheduler pods are in `CrashLoopBackOff` or `Error` state. This is because the setup is not complete.
 
-#### 4) Initialize the Configuration  
+### 4) Initialize the Configuration  
 Reference: [spaceone-initializer](https://github.com/cloudforet-io/spaceone-initializer)
 
 Check the above reference and choose one mode for your environment.
@@ -123,7 +123,7 @@ After that, execute the following command.
 helm install initializer cloudforet/spaceone-initializer -n spaceone -f initializer.yaml
 ```
 
-#### 5) Set the Helm Values and Upgrade the Chart
+### 5) Set the Helm Values and Upgrade the Chart
 Complete the initialization, you can get the system token from the initializer pod logs.
 ```bash
 kubectl logs initializer-5f5b7b5cdc-lnjkl -n spaceone
@@ -163,14 +163,14 @@ helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
 kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
 ```
 
-#### 6) Check the status of the pods
+### 6) Check the status of the pods
 ```bash
 kubectl get pod -n spaceone
 ```
 
 If all pods are in `Running` state, the setup is complete.
 
-#### 7) Configure Ingress
+### 7) Configure Ingress
 After the installation, you need to configure the ingress to access the console and API.
 
 - [AWS Environment](docs/aws/README.md)
@@ -179,7 +179,7 @@ After the installation, you need to configure the ingress to access the console 
 ## Upgrade
 You can upgrade the cloudforet from the previous version.
 
-#### 1) Upgrade the Helm Chart
+### 1) Upgrade the Helm Chart
 ```bash
 helm repo update
 helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
@@ -187,24 +187,24 @@ helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
 ## Uninstall
 You can uninstall the cloudforet with the following command.
 
-#### 1) Delete the Helm Chart
+### 1) Delete the Helm Chart
 ```bash
 helm delete cloudforet -n spaceone
 helm delete cloudforet-initializer -n spaceone
 ```
 
-#### 2) Delete the Ingress
+### 2) Delete the Ingress
 ```bash
 kubectl delete ingress --all -n spaceone
 ```
 
-#### 4) Delete all plugins
+### 4) Delete all plugins
 ```bash
 kubectl delete deployment --all -n spaceone-plugin
 kubectl delete service --all -n spaceone-plugin
 ```
 
-#### 5) Delete cloudforet namespaces
+### 5) Delete cloudforet namespaces
 ```bash
 kubectl delete namespace spaceone
 kubectl delete namespace spaceone-plugin
