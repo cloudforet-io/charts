@@ -76,6 +76,16 @@ entries:
   console:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-05-10T14:50:53.350775214Z"
+    description: SpaceONE console Helm chart for Kubernetes
+    digest: ead37f1b4fff7d01b56acb3387eb2d4b86b310e1449e97db77e3573b96bcdf93
+    name: console
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/console-1.2.16/console-1.2.16.tgz
+    version: 1.2.16
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2023-05-10T14:07:25.386740376Z"
     description: SpaceONE console Helm chart for Kubernetes
     digest: 71f3c679c48909fcb8d5aedb5a10b3a1563c0806522263c481142c99519a4d26
@@ -4481,4 +4491,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-05-10T14:38:23.348273307Z"
+generated: "2023-05-10T14:50:53.352247746Z"
