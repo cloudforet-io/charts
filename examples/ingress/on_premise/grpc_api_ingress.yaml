@@ -1,0 +1,123 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grpc-ingress
+  namespace: spaceone
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "*.grpc.example.com"  # Change the domain
+      secretName: spaceone-tls
+  rules:
+  - host: identity.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service: 
+              name: identity 
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: inventory.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service: 
+              name: inventory
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: repository.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: repository
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: monitoring.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: monitoring
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: config.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: config
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: plugin.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: plugin 
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: statistics.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: statistics
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: notification.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: notification
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: cost-analysis.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: cost-analysis
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: board.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: board
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+  - host: dashboard.grpc.example.com  # Change the domain
+    http:
+      paths:
+        - backend:
+            service:
+              name: dashboard 
+              port: 
+                number: 50051
+          path: /
+          pathType: Prefix
+

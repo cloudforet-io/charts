@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monitoring-webhook-ingress
+  namespace: spaceone
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "*.webhook.example.com"  # Change the domain
+      secretName: spaceone-tls
+  rules:
+    - host: "webhook.example.com"  # Change the domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: monitoring-rest 
+                port:
+                  number: 80

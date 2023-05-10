@@ -1,0 +1,20 @@
+main:
+  import:
+    - /root/spacectl/apply/root_domain.yaml
+    - /root/spacectl/apply/register_marketplace.yaml
+    - /root/spacectl/apply/user_domain.yaml
+    - /root/spacectl/apply/create_role.yaml
+    - /root/spacectl/apply/add_statistics_schedule.yaml
+    - /root/spacectl/apply/print_api_key.yaml
+  var:
+    domain:
+      root: root
+      user: spaceone
+    default_language: ko
+    default_timezone: Asia/Seoul
+    domain_owner:
+      id: admin
+      password: Admin123!@#   # Change your password
+    user:
+      id: system_api_key
+    marketplace_endpoint: grpc://repository.portal.spaceone.dev:50051
