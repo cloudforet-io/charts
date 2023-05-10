@@ -15,11 +15,11 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:..."  # Change the certificate-arn
     alb.ingress.kubernetes.io/load-balancer-name: spaceone-grpc-ingress
-    external-dns.alpha.kubernetes.io/hostname: "*.api.example.com"  # Change the domain
+    external-dns.alpha.kubernetes.io/hostname: "*.grpc.example.com"  # Change the domain
 spec:
   ingressClassName: alb
   rules:
-  - host: identity.api.example.com  # Change the domain
+  - host: identity.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -36,7 +36,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: inventory.api.example.com  # Change the domain
+  - host: inventory.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -53,7 +53,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: repository.api.example.com  # Change the domain
+  - host: repository.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -70,7 +70,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: monitoring.api.example.com  # Change the domain
+  - host: monitoring.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -87,7 +87,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: config.api.example.com  # Change the domain
+  - host: config.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -104,7 +104,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: plugin.api.example.com  # Change the domain
+  - host: plugin.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -121,7 +121,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: statistics.api.example.com  # Change the domain
+  - host: statistics.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -138,7 +138,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: notification.api.example.com  # Change the domain
+  - host: notification.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -155,7 +155,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: cost-analysis.api.example.com  # Change the domain
+  - host: cost-analysis.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -172,7 +172,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: board.api.example.com  # Change the domain
+  - host: board.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:
@@ -189,7 +189,7 @@ spec:
                 number: 50051
           path: /*
           pathType: ImplementationSpecific
-  - host: dashboard.api.example.com  # Change the domain
+  - host: dashboard.grpc.example.com  # Change the domain
     http:
       paths:
         - backend:

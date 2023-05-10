@@ -4,6 +4,11 @@ A Helm Chart for Cloudforet `1.11.3`.
 ## Prerequisites
 - Kubernetes 1.21+
 - Helm 3.2.0+
+- Service Domain & SSL Certificate (optional)
+  - Console: `*.console.example.com`
+  - REST API: `*.api.example.com`
+  - gRPC API: `*.grpc.example.com`
+  - Webhook: `webhook.example.com`
 - MongoDB 5.0+ (optional)
 
 ### Docker Images
@@ -29,8 +34,8 @@ You can download the docker images from [Docker Hub](https://hub.docker.com/u/sp
 | spaceone/console-api-v2     | 1.11.2              |    O     |
 | spaceone/supervisor         | 1.11.0              |    O     |
 | spaceone/spacectl           | 1.11.2              |    O     |
-| spaceone/marketplace-assets | 1.11.0.1            |    O     |
-| spaceone/docs               | 0.1.20230502.153847 |    O     |
+| spaceone/marketplace-assets | 1.11.0.1            |    X     |
+| spaceone/docs               | 0.1.20230502.153847 |    X     |
 | mongo                       | latest              |    X     |
 | redis                       | latest              |    X     |
 
@@ -110,18 +115,12 @@ supervisor-scheduler-6744657cb6-tpf78     2/2     Running            0          
 > Scheduler pods are in `CrashLoopBackOff` or `Error` state. This is because the setup is not complete.
 
 ### 4) Initialize the Configuration  
-Reference: [spaceone-initializer](https://github.com/cloudforet-io/spaceone-initializer)
-
-Check the above reference and choose one mode for your environment.
-- [Default Mode (with Marketplace)](https://github.com/cloudforet-io/spaceone-initializer#default-mode-with-marketplace)
-- [Local Mode (without Marketplace)](https://github.com/cloudforet-io/spaceone-initializer#local-mode-without-marketplace)
-
-And copy the values to the `initializer.yaml` file and edit the values for your environment.
-
-After that, execute the following command.
+First, download the [initializer.yaml](examples/initializer.yaml) file and execute the following command.
 ```bash
 helm install initializer cloudforet/spaceone-initializer -n spaceone -f initializer.yaml
 ```
+
+For more information about the initializer, please refer the [spaceone-initializer](https://github.com/cloudforet-io/spaceone-initializer).
 
 ### 5) Set the Helm Values and Upgrade the Chart
 Complete the initialization, you can get the system token from the initializer pod logs.
@@ -141,6 +140,7 @@ Create the `values.yaml` file and edit the values.
 ```yaml
 console:
     production_json:
+        # If you don't have a service domain, you refer to the following 'No Domain & IP Access' example.
         CONSOLE_API:
             ENDPOINT: https://console.api.example.com       # Change the endpoint
         CONSOLE_API_V2:
@@ -151,13 +151,27 @@ global:
         TOKEN: '{TOKEN}'                                    # Change the system token
 ```
 
-For more advanced configuration, please refer the [documents](docs/parameters.md) and examples.
-- [All Values](examples/all_values.yaml)
-- [External Database](examples/external_db_values.yaml)
-- [One Namespace](examples/one_namespace_values.yaml)
+For more advanced configuration, please refer the following the links.
+- Documents
+  - [Parameters](docs/parameters.md)
+- Examples
+  - [All Values](examples/values/all.yaml)
+  - Infra & Kubernetes
+    - [Set External Database](examples/values/external_db_values.yaml)
+    - Change Database Name
+    - No Domain & IP Access
+    - Change Pod Replica
+    - Set Container Resource Request & Limit
+    - Set Private Docker Registry
+    - Set HTTP Proxy
+    - [One Namespace](examples/values/one_namespace_values.yaml)
+  - Application
+    - Enable Monitoring Webhook & Notification
+    - Change Secret Storage
+    - Set Private Assets & Docs
+ 
 
-
-After that, execute the following command.
+After editing the `values.yaml` file, upgrade the helm chart.
 ```bash
 helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
 kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
@@ -173,8 +187,9 @@ If all pods are in `Running` state, the setup is complete.
 ### 7) Configure Ingress
 After the installation, you need to configure the ingress to access the console and API.
 
-- [AWS Environment](docs/aws/README.md)
-- [On-premise Environment](docs/on_premise/README.md)
+- [AWS](docs/ingress/aws.md)
+- [On-premise](docs/ingress/on_premise.md)
+- [Port Forwarding (No Ingress)](docs/ingress/port_forwarding.md)
 
 ## Upgrade
 You can upgrade the cloudforet from the previous version.
@@ -183,6 +198,7 @@ You can upgrade the cloudforet from the previous version.
 ```bash
 helm repo update
 helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
+kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
 ```
 ## Uninstall
 You can uninstall the cloudforet with the following command.
