@@ -66,7 +66,7 @@ First, download the [rbac.yaml](examples/rbac.yaml) file and execute the followi
 kubectl apply -f rbac.yaml -n spaceone-plugin
 ```
 
-### 3) Install Cloudforet Chart
+### 4) Install Cloudforet Chart
 ```bash
 helm install cloudforet cloudforet/spaceone -n spaceone
 ```
@@ -114,7 +114,7 @@ supervisor-scheduler-6744657cb6-tpf78     2/2     Running            0          
 
 > Scheduler pods are in `CrashLoopBackOff` or `Error` state. This is because the setup is not complete.
 
-### 4) Initialize the Configuration  
+### 5) Initialize the Configuration  
 First, download the [initializer.yaml](examples/initializer.yaml) file and execute the following command.
 ```bash
 helm install initializer cloudforet/spaceone-initializer -n spaceone -f initializer.yaml
@@ -122,7 +122,7 @@ helm install initializer cloudforet/spaceone-initializer -n spaceone -f initiali
 
 For more information about the initializer, please refer the [spaceone-initializer](https://github.com/cloudforet-io/spaceone-initializer).
 
-### 5) Set the Helm Values and Upgrade the Chart
+### 6) Set the Helm Values and Upgrade the Chart
 Complete the initialization, you can get the system token from the initializer pod logs.
 ```bash
 kubectl logs initializer-5f5b7b5cdc-lnjkl -n spaceone
@@ -177,14 +177,14 @@ helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
 kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
 ```
 
-### 6) Check the status of the pods
+### 7) Check the status of the pods
 ```bash
 kubectl get pod -n spaceone
 ```
 
 If all pods are in `Running` state, the setup is complete.
 
-### 7) Configure Ingress
+### 8) Configure Ingress
 After the installation, you need to configure the ingress to access the console and API.
 
 - [AWS](docs/ingress/aws.md)
