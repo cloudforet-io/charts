@@ -17,7 +17,7 @@ You can download the docker images from [Docker Hub](https://hub.docker.com/u/sp
 | Image Name                  | Version             | Required |
 |:----------------------------|:--------------------|:--------:|
 | spaceone/console            | 1.11.0.27           |    O     |
-| spaceone/console-api        | 1.11.0.3            |    O     |
+| spaceone/console-api        | 1.11.0.4            |    O     |
 | spaceone/identity           | 1.11.0              |    O     |
 | spaceone/secret             | 1.11.0              |    O     |
 | spaceone/repository         | 1.11.0              |    O     |
