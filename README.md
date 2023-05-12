@@ -1,5 +1,5 @@
 # Cloudforet Helm Charts 
-A Helm Chart for Cloudforet `1.11.3`.
+A Helm Chart for Cloudforet `1.11.4`.
 
 ## Prerequisites
 - Kubernetes 1.21+
@@ -20,7 +20,7 @@ You can download the docker images from [Docker Hub](https://hub.docker.com/u/sp
 | spaceone/console-api        | 1.11.0.4            |    O     |
 | spaceone/identity           | 1.11.0              |    O     |
 | spaceone/secret             | 1.11.0              |    O     |
-| spaceone/repository         | 1.11.0              |    O     |
+| spaceone/repository         | 1.11.2              |    O     |
 | spaceone/plugin             | 1.11.0              |    O     |
 | spaceone/config             | 1.11.0              |    O     |
 | spaceone/inventory          | 1.11.3              |    O     |
