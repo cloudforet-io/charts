@@ -1,5 +1,5 @@
 # Cloudforet Helm Charts 
-A Helm Chart for Cloudforet `1.11.4`.
+A Helm Chart for Cloudforet `1.11.5`.
 
 ## Prerequisites
 - Kubernetes 1.21+
@@ -159,17 +159,17 @@ For more advanced configuration, please refer the following the links.
   - Infra & Kubernetes
     - [Set External Database](examples/values/external_db_values.yaml)
     - Change Database Name
-    - No Domain & IP Access
     - Change Pod Replica
     - Set Container Resource Request & Limit
     - Set Private Docker Registry
     - Set HTTP Proxy
     - [One Namespace](examples/values/one_namespace_values.yaml)
+    - Change Namespace
   - Application
+    - Multiple Domain
     - Enable Monitoring Webhook & Notification
     - Change Secret Storage
     - Set Private Assets & Docs
- 
 
 After editing the `values.yaml` file, upgrade the helm chart.
 ```bash
