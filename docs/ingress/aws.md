@@ -34,3 +34,7 @@ kubectl apply -f console_api_ingress.yaml -n spaceone
 kubectl apply -f grpc_api_ingress.yaml -n spaceone
 kubectl apply -f monitoring_webhook_ingress.yaml -n spaceone  // If you want to enable monitoring webhook, apply this.
 ```
+
+### 5) Connect to the Console
+You can access the console using the following URL.
+- https://spaceone.console.example.com
