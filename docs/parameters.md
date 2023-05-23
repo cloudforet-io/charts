@@ -8,7 +8,7 @@
 | `global.supervisor_namespace` | Namespace for supervisor resource     | `spaceone-supervisor` |
 | `global.shared_conf`          | Shared configuration for all services | `{...}`               |
 
-### Global Shared Configuration
+### Global Shared Configuration (shared_conf)
 
 | Parameter                                                  | Description                | Default                                      |
 |------------------------------------------------------------|----------------------------|----------------------------------------------|
@@ -35,13 +35,13 @@
 | `console.image.version`   | Console image tag     | `x.y.z`            |
 | `console.production_json` | Console Configuration | `{...}`            |
 
-### Console Production JSON
+### Console Configuration (production_json)
 
-| Parameter                                         | Description          | Default                              |
-|---------------------------------------------------|----------------------|--------------------------------------|
-| `console.production_json.CONSOLE_API.ENDPOINT`    | Console API Endpoint | `http://console.api.example.com`     |
-| `console.production_json.CONSOLE_API_V2.ENDPOINT` | Console API Endpoint | `http://console-v2.api.example.com`  |
-| `console.production_json.DOCS`                    | Docs URL             | `[...]`                              |
-| `console.production_json.DOCS[].label`            | Document Label       | `User Guide`                         |
-| `console.production_json.DOCS[].url`              | Document URL         | `https://cloudforet.io/docs/guides/` |
-| `console.production_json.CONTACT_LINK`            | Contact Link         | `""`                                 |
+| Parameter                                         | Description             | Default                              |
+|---------------------------------------------------|-------------------------|--------------------------------------|
+| `console.production_json.CONSOLE_API.ENDPOINT`    | Console API Endpoint    | `http://console.api.example.com`     |
+| `console.production_json.CONSOLE_API_V2.ENDPOINT` | Console API v2 Endpoint | `http://console-v2.api.example.com`  |
+| `console.production_json.DOCS[]`                  | Docs List               | `[...]`                              |
+| `console.production_json.DOCS[].label`            | Document Label          | `User Guide`                         |
+| `console.production_json.DOCS[].url`              | Document URL            | `https://cloudforet.io/docs/guides/` |
+| `console.production_json.CONTACT_LINK`            | Contact Link            | `""`                                 |
