@@ -1,0 +1,10 @@
+#console:
+#    production_json:
+#        CONSOLE_API:
+#            ENDPOINT: https://console.api.example.com       # Change the endpoint
+#        CONSOLE_API_V2:
+#            ENDPOINT: https://console-v2.api.example.com    # Change the endpoint
+
+#global:
+#    shared_conf:
+#        TOKEN: '{TOKEN}'                                    # Change the system token

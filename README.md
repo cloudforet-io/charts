@@ -157,15 +157,16 @@ For more advanced configuration, please refer the following the links.
 - Examples
   - [All Values](examples/values/all.yaml)
   - Infra & Kubernetes
-    - [Set External Database](examples/values/external_db_values.yaml)
-    - Change Database Name
-    - Change Pod Replica
-    - Set Container Resource Request & Limit
+    - [Change Pod Replica](examples/values/change_pod_replica_values.yaml)
+    - [Node Selector](examples/values/node_selector_values.yaml)
+    - [Change Namespace](examples/values/change_namespace_values.yaml)
+    - [One Namespace](examples/values/one_namespace_values.yaml)
     - Set Private Docker Registry
     - Set HTTP Proxy
-    - [One Namespace](examples/values/one_namespace_values.yaml)
-    - Change Namespace
+    - Set Container Resource Request & Limit
   - Application
+    - [Set External Database](examples/values/external_db_values.yaml)
+    - [Change Database Name](examples/values/change_db_name_values.yaml)
     - Multiple Domain
     - Enable Monitoring Webhook & Notification
     - Change Secret Storage
