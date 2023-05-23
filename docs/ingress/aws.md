@@ -1,6 +1,9 @@
 ## AWS Architecture
 ![AWS Architecture](images/aws_architecture.png)
 
+If you want to learn more about the **_Pod IP based Load Balancing_**, please refer to the following link.
+- Traffic Modes in [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) 
+
 ## Configuration
 You can create the ingress using the following steps.
 
