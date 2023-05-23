@@ -1,10 +1,19 @@
 #console:
-#    production_json:
-#        CONSOLE_API:
-#            ENDPOINT: https://console.api.example.com       # Change the endpoint
-#        CONSOLE_API_V2:
-#            ENDPOINT: https://console-v2.api.example.com    # Change the endpoint
+#  production_json:
+#    CONSOLE_API:
+#      ENDPOINT: https://console.api.example.com        # Change the endpoint
+#    CONSOLE_API_V2:
+#      ENDPOINT: https://console-v2.api.example.com     # Change the endpoint
 
-#global:
-#    shared_conf:
-#        TOKEN: '{TOKEN}'                                    # Change the system token
+global:
+  shared_conf:
+#    TOKEN: '{TOKEN}'                                    # Change the system token
+    namespace: spaceone-dev                              # Change the namespace
+    supervisor_namespace: spaceone-dev                   # Change the namespace
+
+supervisor:
+  application_scheduler:
+    HOSTNAME: spaceone-dev-plugin.svc.cluster.local      # Change the plugin namespace
+    CONNECTORS:
+      KubernetesConnector:
+        namespace: spaceone-dev-plugin                   # Change the plugin namespace

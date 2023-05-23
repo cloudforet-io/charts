@@ -11,6 +11,9 @@ A Helm Chart for Cloudforet `1.11.5`.
   - Webhook: `webhook.example.com`
 - MongoDB 5.0+ (optional)
 
+### Cloudforet Architecture
+![Cloudforet Architecture](docs/images/cloudforet_architecture.png)
+
 ### Docker Images
 You can download the docker images from [Docker Hub](https://hub.docker.com/u/spaceone).
 
@@ -167,7 +170,7 @@ For more advanced configuration, please refer the following the links.
   - Application
     - [Set External Database](examples/values/external_db_values.yaml)
     - [Change Database Name](examples/values/change_db_name_values.yaml)
-    - Multiple Domain
+    - Multi-Tenant Mode
     - Enable Monitoring Webhook & Notification
     - Change Secret Storage
     - Set Private Assets & Docs
