@@ -1,34 +1,34 @@
 #console:
-#    production_json:
-#        CONSOLE_API:
-#            ENDPOINT: https://console.api.example.com       # Change the endpoint
-#        CONSOLE_API_V2:
-#            ENDPOINT: https://console-v2.api.example.com    # Change the endpoint
-
+#  production_json:
+#    CONSOLE_API:
+#      ENDPOINT: https://console.api.example.com        # Change the endpoint
+#    CONSOLE_API_V2:
+#      ENDPOINT: https://console-v2.api.example.com     # Change the endpoint
+#
 #global:
-#    shared_conf:
-#        TOKEN: '{TOKEN}'                                    # Change the system token
+#  shared_conf:
+#    TOKEN: '{TOKEN}'                                   # Change the system token
 
 identity:
-    application_grpc:
-        DATABASES:
-          default:
-            db: dev-identity                                 # Change the db name
+  application_grpc:
+    DATABASES:
+      default:
+        db: dev-identity                                # Change the db name
 
 inventory:
-    application_grpc:
-        DATABASES:
-          default:
-            db: dev-inventory                               # Change the db name
+  application_grpc:
+    DATABASES:
+      default:
+        db: dev-inventory                               # Change the db name
 
-    application_worker:
-      DATABASES:
-        default:
-          db: dev-inventory                               # Change the db name
+  application_worker:
+    DATABASES:
+      default:
+        db: dev-inventory                               # Change the db name
 
-    application_scheduler:
-      DATABASES:
-        default:
-          db: dev-inventory                               # Change the db name
+  application_scheduler:
+    DATABASES:
+      default:
+        db: dev-inventory                               # Change the db name
 
-# Change the db name of all microservices
+# Change the db name for all the microservices

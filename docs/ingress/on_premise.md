@@ -1,5 +1,5 @@
 ## On-premise Architecture
-
+![On-premise Architecture](../images/on_premise_architecture.png)
 
 ## Configuration
 You can create the ingress using the following steps.

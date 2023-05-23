@@ -1,5 +1,5 @@
 ## Port Forwarding (No Ingress) Architecture
-
+![Port Forwarding Architecture](../images/port_forwarding_architecture.png)
 
 ## Configuration
 You can create the ingress using the following steps.
