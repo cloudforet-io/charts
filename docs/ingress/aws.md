@@ -1,5 +1,5 @@
 ## AWS Architecture
-
+![AWS Architecture](images/aws_architecture.png)
 
 ## Configuration
 You can create the ingress using the following steps.
