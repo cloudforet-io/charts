@@ -142,16 +142,16 @@ FINISH SPACEONE INITIALIZE
 Create the `values.yaml` file and edit the values.
 ```yaml
 console:
-    production_json:
-        # If you don't have a service domain, you refer to the following 'No Domain & IP Access' example.
-        CONSOLE_API:
-            ENDPOINT: https://console.api.example.com       # Change the endpoint
-        CONSOLE_API_V2:
-            ENDPOINT: https://console-v2.api.example.com    # Change the endpoint
+  production_json:
+    # If you don't have a service domain, you refer to the following 'No Domain & IP Access' example.
+    CONSOLE_API:
+      ENDPOINT: https://console.api.example.com       # Change the endpoint
+    CONSOLE_API_V2:
+      ENDPOINT: https://console-v2.api.example.com    # Change the endpoint
 
 global:
-    shared_conf:
-        TOKEN: '{TOKEN}'                                    # Change the system token
+  shared_conf:
+    TOKEN: '{TOKEN}'                                    # Change the system token
 ```
 
 For more advanced configuration, please refer the following the links.
