@@ -7,11 +7,11 @@ You can create the ingress using the following steps.
 ### 1) Change production_json in values.yaml
 ```yaml
 console:
-    production_json:
-        CONSOLE_API:
-            ENDPOINT: https://localhost:8081
-        CONSOLE_API_V2:
-            ENDPOINT: https://localhost:8082
+  production_json:
+    CONSOLE_API:
+      ENDPOINT: https://127.0.0.1:8081
+    CONSOLE_API_V2:
+      ENDPOINT: https://127.0.0.1:8082
 ```
 After editing the `values.yaml` file, upgrade the helm chart.
 ```bash
