@@ -65,7 +65,7 @@ If you want to use only one namespace, you don't create the `spaceone-plugin` na
 ### 3) Create Role and RoleBinding
 First, download the [rbac.yaml](examples/rbac.yaml) file.
 ```bash
-wget https://raw.githubusercontent.com/GeunjeLEE/charts/master/examples/rbac.yaml -O rbac.yaml
+wget https://raw.githubusercontent.com/cloudforet-io/charts/master/examples/rbac.yaml -O rbac.yaml
 ```
 And execute the following command.
 ```bash
@@ -123,7 +123,7 @@ supervisor-scheduler-6744657cb6-tpf78     2/2     Running            0          
 ### 5) Initialize the Configuration  
 First, download the [initializer.yaml](examples/initializer.yaml) file.
 ```bash
-wget https://raw.githubusercontent.com/GeunjeLEE/charts/master/examples/initializer.yaml -O initializer.yaml
+wget https://raw.githubusercontent.com/cloudforet-io/charts/master/examples/initializer.yaml -O initializer.yaml
 ```
 And execute the following command.
 ```bash
