@@ -63,8 +63,11 @@ kubectl create ns spaceone-plugin
 If you want to use only one namespace, you don't create the `spaceone-plugin` namespace.
 
 ### 3) Create Role and RoleBinding
-First, download the [rbac.yaml](examples/rbac.yaml) file and execute the following command.
-
+First, download the [rbac.yaml](examples/rbac.yaml) file.
+```bash
+wget https://raw.githubusercontent.com/GeunjeLEE/charts/master/examples/rbac.yaml -O rbac.yaml
+```
+And execute the following command.
 ```bash
 kubectl apply -f rbac.yaml -n spaceone-plugin
 ```
@@ -118,7 +121,11 @@ supervisor-scheduler-6744657cb6-tpf78     2/2     Running            0          
 > Scheduler pods are in `CrashLoopBackOff` or `Error` state. This is because the setup is not complete.
 
 ### 5) Initialize the Configuration  
-First, download the [initializer.yaml](examples/initializer.yaml) file and execute the following command.
+First, download the [initializer.yaml](examples/initializer.yaml) file.
+```bash
+wget https://raw.githubusercontent.com/GeunjeLEE/charts/master/examples/initializer.yaml -O initializer.yaml
+```
+And execute the following command.
 ```bash
 helm install initializer cloudforet/spaceone-initializer -n spaceone -f initializer.yaml
 ```
