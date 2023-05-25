@@ -1,0 +1,14 @@
+console:
+  production_json:
+    # If you set DOMAIN_NAME_REF to a hostname, you can provide separate environments for multiple tenants.
+    # Each organization will have its own console domain.
+    # e.g.) <organization>.console.example.com
+    DOMAIN_NAME_REF: hostname
+#    CONSOLE_API:
+#      ENDPOINT: https://console.api.example.com        # Change the endpoint
+#    CONSOLE_API_V2:
+#      ENDPOINT: https://console-v2.api.example.com     # Change the endpoint
+
+#global:
+#  shared_conf:
+#    TOKEN: '{TOKEN}'                                   # Change the system token

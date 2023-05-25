@@ -177,7 +177,7 @@ For more advanced configuration, please refer the following the links.
   - Application
     - [Set External Database](examples/values/external_db_values.yaml)
     - [Change Database Name](examples/values/change_db_name_values.yaml)
-    - Multi-Tenant Mode
+    - [Multi-Tenancy Mode](examples/values/multi_tenancy_mode_values.yaml)
     - Enable Monitoring Webhook & Notification
     - Change Secret Storage
     - Set Private Assets & Docs
