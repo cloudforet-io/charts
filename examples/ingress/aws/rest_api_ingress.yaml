@@ -70,7 +70,6 @@ spec:
                 port:
                   name: use-annotation
 
-
     - host: "console-v2.api.example.com"  # Change the hostname
       http:
         paths:
