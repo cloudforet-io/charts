@@ -14,7 +14,7 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:..."  # Change the certificate-arn
     alb.ingress.kubernetes.io/success-codes: 200-399
     alb.ingress.kubernetes.io/load-balancer-name: spaceone-monitoring-webhook-ingress
-    external-dns.alpha.kubernetes.io/hostname: "webhook.example.com"  # Change the domain
+    external-dns.alpha.kubernetes.io/hostname: "webhook.example.com"  # Change the hostname
 spec:
   ingressClassName: alb
   rules:
@@ -28,7 +28,7 @@ spec:
                 port:
                   name: use-annotation
 
-    - host: "webhook.example.com"  # Change the domain
+    - host: "webhook.example.com"  # Change the hostname
       http:
         paths:
           - path: /*
