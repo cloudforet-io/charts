@@ -10,7 +10,7 @@ spec:
         - "*.grpc.example.com"  # Change the domain
       secretName: spaceone-tls
   rules:
-  - host: identity.grpc.example.com  # Change the domain
+  - host: identity.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -20,7 +20,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: inventory.grpc.example.com  # Change the domain
+  - host: inventory.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -30,7 +30,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: repository.grpc.example.com  # Change the domain
+  - host: repository.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -40,7 +40,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: monitoring.grpc.example.com  # Change the domain
+  - host: monitoring.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -50,7 +50,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: config.grpc.example.com  # Change the domain
+  - host: config.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -60,7 +60,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: plugin.grpc.example.com  # Change the domain
+  - host: plugin.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -70,7 +70,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: statistics.grpc.example.com  # Change the domain
+  - host: statistics.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -80,7 +80,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: notification.grpc.example.com  # Change the domain
+  - host: notification.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -90,7 +90,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: cost-analysis.grpc.example.com  # Change the domain
+  - host: cost-analysis.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -100,7 +100,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: board.grpc.example.com  # Change the domain
+  - host: board.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
@@ -110,7 +110,7 @@ spec:
                 number: 50051
           path: /
           pathType: Prefix
-  - host: dashboard.grpc.example.com  # Change the domain
+  - host: dashboard.grpc.example.com  # Change the hostname
     http:
       paths:
         - backend:
