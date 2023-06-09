@@ -5,7 +5,7 @@ A Helm Chart for Cloudforet `1.11.5`.
 - Kubernetes 1.21+
 - Helm 3.2.0+
 - Service Domain & SSL Certificate (optional)
-  - Console: `*.console.example.com`
+  - Console: `console.example.com`
   - REST API: `*.api.example.com`
   - gRPC API: `*.grpc.example.com`
   - Webhook: `webhook.example.com`

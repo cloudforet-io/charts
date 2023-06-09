@@ -7,10 +7,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "*.webhook.example.com"  # Change the domain
+        - "webhook.example.com"  # Change the hostname
       secretName: spaceone-tls
   rules:
-    - host: "webhook.example.com"  # Change the domain
+    - host: "webhook.example.com"  # Change the hostname
       http:
         paths:
           - path: /

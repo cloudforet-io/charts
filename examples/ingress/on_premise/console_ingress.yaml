@@ -8,10 +8,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - "*.console.example.com"  # Change the domain
+        - "console.example.com"  # Change the hostname
       secretName: spaceone-tls
   rules:
-    - host: "*.console.example.com"  # Change the domain
+    - host: "console.example.com"  # Change the hostname
       http:
         paths:
           - path: /
