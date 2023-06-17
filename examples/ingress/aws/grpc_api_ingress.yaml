@@ -14,7 +14,7 @@ metadata:
     alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0
     alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
     alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:..."  # Change the certificate-arn
-    alb.ingress.kubernetes.io/load-balancer-name: spaceone-grpc-ingress
+    alb.ingress.kubernetes.io/load-balancer-name: spaceone-grpc-ingress # Caution!! Must be fewer than 32 characters.
     external-dns.alpha.kubernetes.io/hostname: "*.grpc.example.com"  # Change the hostname
 spec:
   ingressClassName: alb

@@ -42,7 +42,7 @@ First, you need to download all the ingress files and replace the `certificate-a
 And then, apply the ingress files.
 ```bash
 kubectl apply -f console_ingress.yaml -n spaceone
-kubectl apply -f console_api_ingress.yaml -n spaceone
+kubectl apply -f rest_api_ingress.yaml -n spaceone
 kubectl apply -f grpc_api_ingress.yaml -n spaceone
 kubectl apply -f monitoring_webhook_ingress.yaml -n spaceone
 ```
