@@ -1,5 +1,5 @@
 # Cloudforet Helm Charts 
-A Helm Chart for Cloudforet `1.11.7`.
+A Helm Chart for Cloudforet `1.11`.
 
 ## Prerequisites
 - Kubernetes 1.21+
