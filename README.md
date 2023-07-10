@@ -23,13 +23,13 @@ You can download the docker images from [Docker Hub](https://hub.docker.com/u/sp
 | spaceone/console-api        | 1.11.0.4            |    O     |
 | spaceone/identity           | 1.11.0              |    O     |
 | spaceone/secret             | 1.11.0              |    O     |
-| spaceone/repository         | 1.12.dev8           |    O     |
+| spaceone/repository         | 1.12.dev9           |    O     |
 | spaceone/plugin             | 1.11.0              |    O     |
 | spaceone/config             | 1.11.0              |    O     |
 | spaceone/inventory          | 1.11.0.3            |    O     |
 | spaceone/monitoring         | 1.11.0.3            |    O     |
 | spaceone/statistics         | 1.11.0              |    O     |
-| spaceone/cost-analysis      | 1.11.0.3            |    O     |
+| spaceone/cost-analysis      | 1.12.dev8           |    O     |
 | spaceone/notification       | 1.11.0              |    O     |
 | spaceone/board              | 1.11.0              |    O     |
 | spaceone/file-manager       | 1.11.0              |    O     |
