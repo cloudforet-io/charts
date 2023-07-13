@@ -6,10 +6,10 @@
 #      ENDPOINT: https://console-v2.api.example.com     # Change the endpoint
 
 global:
+  namespace: spaceone-dev                              # Change the namespace
+  supervisor_namespace: spaceone-dev                   # Change the namespace
   shared_conf:
 #    TOKEN: '{TOKEN}'                                    # Change the system token
-    namespace: spaceone-dev                              # Change the namespace
-    supervisor_namespace: spaceone-dev                   # Change the namespace
 
 supervisor:
   application_scheduler:
