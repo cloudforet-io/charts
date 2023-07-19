@@ -134,7 +134,7 @@ For more advanced configuration, please refer the following the links.
 - Documents
   - [Parameters](docs/parameters.md)
 - Examples
-  - [All Values](examples/values/all.yaml)
+  - [Default Values](https://github.com/cloudforet-io/spaceone/blob/master/deploy/helm/values.yaml)
   - Infra & Kubernetes
     - [Change Pod Replica](examples/values/change_pod_replica_values.yaml)
     - [Node Selector](examples/values/node_selector_values.yaml)
