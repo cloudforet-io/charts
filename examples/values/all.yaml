@@ -7,6 +7,12 @@ image:
     version: 3.3
 
 resources: {}
+#     requests:
+#         memory: "128Mi"
+#         cpu: "25m"
+#     limits:
+#         memory: "256Mi"
+#         cpu: "50m"
 
 # imagePullSecrets:
 #   - name: <name of imagePullSecret>
@@ -33,8 +39,8 @@ spacectl:
 marketplace-assets:
     enabled: true
     image:
-        name: spaceone/marketplace-assets
-        version: 1.11.0.1
+        name: cloudforet/marketplace-assets
+        version: 1.12.dev5
 
 docs:
     enabled: true
@@ -135,8 +141,8 @@ secret:
 repository:
     enabled: true
     image:
-        name: spaceone/repository
-        version: 1.11.0.2
+        name: cloudforet/repository
+        version: 1.12.dev9
 
     application_grpc:
         DATABASES:
@@ -264,8 +270,8 @@ statistics:
     scheduler: true
     worker: true
     image:
-        name: spaceone/statistics
-        version: 1.11.0
+        name: cloudforet/statistics
+        version: 1.12.dev6
 
     application_grpc:
         DATABASES:
@@ -289,8 +295,8 @@ cost-analysis:
     worker: true
     replicas_worker: 4
     image:
-        name: spaceone/cost-analysis
-        version: 1.11.0.3
+        name: cloudforet/cost-analysis
+        version: 1.12.dev11
 
     application_grpc:
         DATABASES:
