@@ -14,37 +14,6 @@ A Helm Chart for Cloudforet `1.11`.
 ### Cloudforet Architecture
 ![Cloudforet Architecture](docs/images/cloudforet_architecture.png)
 
-### Docker Images
-You can download the docker images from [Docker Hub](https://hub.docker.com/u/spaceone).
-
-| Image Name                  | Version             | Required |
-|:----------------------------|:--------------------|:--------:|
-| spaceone/console            | 1.11.0.27           |    O     |
-| spaceone/console-api        | 1.11.0.4            |    O     |
-| spaceone/identity           | 1.11.0              |    O     |
-| spaceone/secret             | 1.11.0              |    O     |
-| spaceone/repository         | 1.12.dev9           |    O     |
-| spaceone/plugin             | 1.11.0              |    O     |
-| spaceone/config             | 1.11.0              |    O     |
-| spaceone/inventory          | 1.11.0.3            |    O     |
-| spaceone/monitoring         | 1.11.0.3            |    O     |
-| spaceone/statistics         | 1.11.0              |    O     |
-| spaceone/cost-analysis      | 1.12.dev8           |    O     |
-| spaceone/notification       | 1.11.0              |    O     |
-| spaceone/board              | 1.11.0              |    O     |
-| spaceone/file-manager       | 1.11.0              |    O     |
-| spaceone/dashboard          | 1.11.0.4            |    O     |
-| spaceone/console-api-v2     | 1.11.0.2            |    O     |
-| spaceone/supervisor         | 1.11.0.4            |    O     |
-| spaceone/spacectl           | 1.11.0.12           |    O     |
-| spaceone/marketplace-assets | 1.11.0.1            |    X     |
-| spaceone/docs               | 0.1.20230502.153847 |    X     |
-| mongo                       | latest              |    X     |
-| redis                       | latest              |    X     |
-
-> If your Kubernetes cluster can't access the internet, you need to download the docker images and push them to your private docker registry.
-
-
 ## Installation
 You can install the Cloudforet using the following the steps.
 
@@ -165,7 +134,7 @@ For more advanced configuration, please refer the following the links.
 - Documents
   - [Parameters](docs/parameters.md)
 - Examples
-  - [All Values](examples/values/all.yaml)
+  - [Default Values](https://github.com/cloudforet-io/spaceone/blob/master/deploy/helm/values.yaml)
   - Infra & Kubernetes
     - [Change Pod Replica](examples/values/change_pod_replica_values.yaml)
     - [Node Selector](examples/values/node_selector_values.yaml)
