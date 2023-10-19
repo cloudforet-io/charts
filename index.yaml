@@ -484,6 +484,16 @@ entries:
   inventory:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-10-19T05:33:45.584895091Z"
+    description: SpaceONE inventory Helm chart for Kubernetes
+    digest: b191e925efd78614bde871eacc47592498d4c7e69375d4de0ec7b5662ca881e5
+    name: inventory
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/inventory-1.3.16/inventory-1.3.16.tgz
+    version: 1.3.16
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2023-06-30T07:03:58.705710329Z"
     description: SpaceONE inventory Helm chart for Kubernetes
     digest: 9c8803dd40581c7f40dada65b09062c53c7940ac6965dfd2078fe86e64208cba
@@ -6569,4 +6579,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-10-13T10:04:10.935526679Z"
+generated: "2023-10-19T05:33:45.585707462Z"
