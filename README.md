@@ -21,7 +21,7 @@ You can install the Cloudforet using the following the steps.
 ```bash
 helm repo add cloudforet https://cloudforet-io.github.io/charts
 helm repo update
-helm search repo
+helm search repo cloudforet
 ```
 
 ### 2) Create Namespaces
@@ -50,41 +50,44 @@ After executing the above command, check the status of the pod.
 ```bash
 kubectl get pod -n spaceone
 
-NAME                                      READY   STATUS             RESTARTS      AGE
-board-5746fd9657-vtd45                    1/1     Running            0             57s
-config-5d4c4b7f58-z8k9q                   1/1     Running            0             58s
-console-6b64cf66cb-q8v54                  1/1     Running            0             59s
-console-api-7c95848cb8-sgt56              2/2     Running            0             58s
-console-api-v2-rest-7d64bc85dd-987zn      2/2     Running            0             56s
-cost-analysis-7b9d64b944-xw9qg            1/1     Running            0             59s
-cost-analysis-scheduler-ff8cc758d-lfx4n   0/1     Error              3 (37s ago)   55s
-cost-analysis-worker-559b4799b9-fxmxj     1/1     Running            0             58s
-cost-analysis-worker-559b4799b9-nf5vs     1/1     Running            0             58s
-cost-analysis-worker-559b4799b9-swzw8     1/1     Running            0             58s
-cost-analysis-worker-559b4799b9-x8f4j     1/1     Running            0             58s
-dashboard-b4cc996-mgwj9                   1/1     Running            0             56s
-docs-5fb4cc56c7-68qbk                     1/1     Running            0             59s
-identity-6fc984459d-zk8r9                 1/1     Running            0             56s
-inventory-67498999d6-722bw                1/1     Running            0             57s
-inventory-scheduler-5dc6856d44-4spvm      0/1     CrashLoopBackOff   3 (18s ago)   59s
-inventory-worker-68d9fcf5fb-x6knb         1/1     Running            0             55s
-marketplace-assets-8675d44557-ssm92       1/1     Running            0             59s
-mongodb-7c9794854-cdmwj                   1/1     Running            0             59s
-monitoring-fdd44bdbf-pcgln                1/1     Running            0             59s
-notification-5b477f6c49-gzfl8             1/1     Running            0             59s
-notification-scheduler-675696467-gn24j    1/1     Running            0             59s
-notification-worker-d88bb6df6-pjtmn       1/1     Running            0             57s
-plugin-556f7bc49b-qmwln                   1/1     Running            0             57s
-plugin-scheduler-86c4c56d84-cmrmn         0/1     CrashLoopBackOff   3 (13s ago)   59s
-plugin-worker-57986dfdd6-v9vqg            1/1     Running            0             58s
-redis-75df77f7d4-lwvvw                    1/1     Running            0             59s
-repository-5f5b7b5cdc-lnjkl               1/1     Running            0             57s
-secret-77ffdf8c9d-48k46                   1/1     Running            0             55s
-spacectl-5664788d5d-dtwpr                 1/1     Running            0             59s
-statistics-67b77b6654-p9wcb               1/1     Running            0             56s
-statistics-scheduler-586875947c-8zfqg     0/1     Error              3 (30s ago)   56s
-statistics-worker-68d646fc7-knbdr         1/1     Running            0             58s
-supervisor-scheduler-6744657cb6-tpf78     2/2     Running            0             59s
+NAME                                       READY   STATUS             RESTARTS      AGE
+board-64f468ccd6-v8wx4                     1/1     Running            0             4m16s
+config-6748dc8cf9-4rbz7                    1/1     Running            0             4m14s
+console-767d787489-wmhvp                   1/1     Running            0             4m15s
+console-api-846867dc59-rst4k               2/2     Running            0             4m16s
+console-api-v2-rest-79f8f6fb59-7zcb2       2/2     Running            0             4m16s
+cost-analysis-5654566c95-rlpkz             1/1     Running            0             4m13s
+cost-analysis-scheduler-69d77598f7-hh8qt   0/1     CrashLoopBackOff   3 (39s ago)   4m13s
+cost-analysis-worker-68755f48bf-6vkfv      1/1     Running            0             4m15s
+cost-analysis-worker-68755f48bf-7sj5j      1/1     Running            0             4m15s
+cost-analysis-worker-68755f48bf-fd65m      1/1     Running            0             4m16s
+cost-analysis-worker-68755f48bf-k6r99      1/1     Running            0             4m15s
+dashboard-68f65776df-8s4lr                 1/1     Running            0             4m12s
+file-manager-5555876d89-slqwg              1/1     Running            0             4m16s
+identity-6455d6f4b7-bwgf7                  1/1     Running            0             4m14s
+inventory-fc6585898-kjmwx                  1/1     Running            0             4m13s
+inventory-scheduler-6dd9f6787f-k9sff       0/1     CrashLoopBackOff   4 (21s ago)   4m15s
+inventory-worker-7f6d479d88-59lxs          1/1     Running            0             4m12s
+marketplace-assets-7d448b49c-zsr4m         1/1     Running            0             4m15s
+mongodb-6b78c74d49-vjxsf                   1/1     Running            0             4m14s
+monitoring-77d9bd8955-hv6vp                1/1     Running            0             4m15s
+monitoring-rest-75cd56bc4f-wfh2m           2/2     Running            0             4m16s
+monitoring-scheduler-858d876884-b67tc      0/1     Error              3 (33s ago)   4m12s
+monitoring-worker-66b875cf75-9gkg9         1/1     Running            0             4m12s
+notification-659c66cd4d-hxnwz              1/1     Running            0             4m13s
+notification-scheduler-6c9696f96-m9vlr     1/1     Running            0             4m14s
+notification-worker-77865457c9-b4dl5       1/1     Running            0             4m16s
+plugin-558f9c7b9-r6zw7                     1/1     Running            0             4m13s
+plugin-scheduler-695b869bc-d9zch           0/1     Error              4 (59s ago)   4m15s
+plugin-worker-5f674c49df-qldw9             1/1     Running            0             4m16s
+redis-566869f55-zznmt                      1/1     Running            0             4m16s
+repository-8659578dfd-wsl97                1/1     Running            0             4m14s
+secret-69985cfb7f-ds52j                    1/1     Running            0             4m12s
+spacectl-78c6647945-lbf8b                  1/1     Running            0             4m16s
+statistics-98fc4c955-9xtbp                 1/1     Running            0             4m16s
+statistics-scheduler-5b6646d666-jwhdw      0/1     CrashLoopBackOff   3 (27s ago)   4m13s
+statistics-worker-5f9994d85d-ftpwf         1/1     Running            0             4m12s
+supervisor-scheduler-74c84646f5-rw4zf      2/2     Running            0             4m16s
 ```
 
 > Scheduler pods are in `CrashLoopBackOff` or `Error` state. This is because the setup is not complete.
@@ -104,7 +107,7 @@ For more information about the initializer, please refer the [spaceone-initializ
 ### 6) Set the Helm Values and Upgrade the Chart
 Complete the initialization, you can get the system token from the initializer pod logs.
 ```bash
-kubectl logs initializer-5f5b7b5cdc-lnjkl -n spaceone
+kubectl logs initialize-spaceone-okz9g-rsxc2 -n spaceone
 
 ...
 TASK [Print Admin API Key] *********************************************************************************************
@@ -115,7 +118,7 @@ FINISHED [ ok=23, skipped=0 ] **************************************************
 FINISH SPACEONE INITIALIZE
 ```
 
-Create the `values.yaml` file and edit the values.
+First, copy this TOKEN, then Create the `values.yaml` file and paste it to the TOKEN.
 ```yaml
 console:
   production_json:
@@ -172,14 +175,26 @@ After the installation, you need to configure the ingress to access the console 
 - [Port Forwarding (No Ingress)](docs/ingress/port_forwarding.md)
 
 ## Upgrade
-You can upgrade the cloudforet from the previous version.
+You can upgrade the cloudforet from under 1.12 previous version to 1.12 latest version.
+
+> **DB Migration Required**  
+Before upgrade, please check [DB-Migration](https://github.com/cloudforet-io/db-migration/) to migrate DataBase.  
+By migrate script, cost-analysis data and budget data will deleted by script.  Please check it and backup data if you need.
 
 ### 1) Upgrade the Helm Chart
 ```bash
+# update repo
 helm repo update
+# upgrade with helm
 helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
+# DB-Mitration
+/db-migration/src/migrate.py 1.12.0 -f config.yaml
+/db-migration/src/migrate.py 1.12.1 -f config.yaml
+/db-migration/src/migrate.py 1.12.2 -f config.yaml
+# delete all pods for restart 
 kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
 ```
+
 ## Uninstall
 You can uninstall the cloudforet with the following command.
 
