@@ -182,10 +182,18 @@ Before upgrade, please check [DB-Migration](https://github.com/cloudforet-io/db-
 By migrate script, cost-analysis data and budget data will deleted by script.  Please check it and backup data if you need.
 
 ### 1) Upgrade value files
-**Dashboard** is released. So, remove following lines if exists.
+`Dashboard` is released. So, remove following lines if exists.
 
 - Remove `DASHBOARD_ENABLED` lines in `Console` yaml file.
   - `console.production_json.DASHBOARD_ENABLED`
+
+```diff
+console:
+  production_json:
+    ...
+-   DASHBOARD_ENABLED:
+-     - domain-1234567890ab
+```
 
 From version 1.12, `Identity` support SMTP and it is Required. So, please add following lines.
 ```diff
@@ -208,16 +216,29 @@ identity:
 ```
 
 ### 2) Upgrade the Helm Chart
+
+1. Upgrade helm repository 
 ```bash
-# update repo
 helm repo update
-# upgrade with helm
+```
+
+2. Upgrade cloudforet with helm
+```bash
 helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
-# DB-Mitration
+```
+
+3. Migrate Database using [DB-Migration](https://github.com/cloudforet-io/db-migration/)
+> **Please check version.**  
+This guide support upgrade version from 1.11 to 1.12. Older versions need to migrate each script step by step.
+```bash
 /db-migration/src/migrate.py 1.12.0 -f config.yaml
 /db-migration/src/migrate.py 1.12.1 -f config.yaml
 /db-migration/src/migrate.py 1.12.2 -f config.yaml
-# delete all pods for restart 
+```
+
+4. After Migration, delete all pods for restart.
+
+```bash
 kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
 ```
 
