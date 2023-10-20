@@ -181,7 +181,33 @@ You can upgrade the cloudforet from under 1.12 previous version to 1.12 latest v
 Before upgrade, please check [DB-Migration](https://github.com/cloudforet-io/db-migration/) to migrate DataBase.  
 By migrate script, cost-analysis data and budget data will deleted by script.  Please check it and backup data if you need.
 
-### 1) Upgrade the Helm Chart
+### 1) Upgrade value files
+**Dashboard** is released. So, remove following lines if exists.
+
+- Remove `DASHBOARD_ENABLED` lines in `Console` yaml file.
+  - `console.production_json.DASHBOARD_ENABLED`
+
+From version 1.12, `Identity` support SMTP and it is Required. So, please add following lines.
+```diff
+identity:
+  ...
+  application_grpc:
++     EMAIL_CONSOLE_DOMAIN: https://{domain_name}.console.example.com
++     EMAIL_SERVICE_NAME: Cloudforet
++     RESET_PASSWORD_TYPE: ACCESS_TOKEN
+
+    CONNECTORS:
+      ...
++     SMTPConnector:
++         host: {host}
++         port: {prot}
++         user: {account_id}
++         password: {password}
++         from_email: {email address to reveive}
+      ...
+```
+
+### 2) Upgrade the Helm Chart
 ```bash
 # update repo
 helm repo update
