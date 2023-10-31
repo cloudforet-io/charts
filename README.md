@@ -68,7 +68,6 @@ identity-6455d6f4b7-bwgf7                  1/1     Running            0         
 inventory-fc6585898-kjmwx                  1/1     Running            0             4m13s
 inventory-scheduler-6dd9f6787f-k9sff       0/1     CrashLoopBackOff   4 (21s ago)   4m15s
 inventory-worker-7f6d479d88-59lxs          1/1     Running            0             4m12s
-marketplace-assets-7d448b49c-zsr4m         1/1     Running            0             4m15s
 mongodb-6b78c74d49-vjxsf                   1/1     Running            0             4m14s
 monitoring-77d9bd8955-hv6vp                1/1     Running            0             4m15s
 monitoring-rest-75cd56bc4f-wfh2m           2/2     Running            0             4m16s
@@ -83,7 +82,6 @@ plugin-worker-5f674c49df-qldw9             1/1     Running            0         
 redis-566869f55-zznmt                      1/1     Running            0             4m16s
 repository-8659578dfd-wsl97                1/1     Running            0             4m14s
 secret-69985cfb7f-ds52j                    1/1     Running            0             4m12s
-spacectl-78c6647945-lbf8b                  1/1     Running            0             4m16s
 statistics-98fc4c955-9xtbp                 1/1     Running            0             4m16s
 statistics-scheduler-5b6646d666-jwhdw      0/1     CrashLoopBackOff   3 (27s ago)   4m13s
 statistics-worker-5f9994d85d-ftpwf         1/1     Running            0             4m12s
