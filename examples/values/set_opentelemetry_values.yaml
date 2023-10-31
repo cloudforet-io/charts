@@ -1,0 +1,4 @@
+global:
+  shared_conf:
+    OTEL:
+      endpoint: {Endpoint of OpenTelemetry Collector}   # Set the OpenTelemetry endpoint
