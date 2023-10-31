@@ -153,6 +153,7 @@ For more advanced configuration, please refer the following the links.
     - Enable Monitoring Webhook & Notification
     - Change Secret Storage
     - Set Private Assets & Docs
+    - [Set OpenTelemetry](examples/values/set_opentelemetry_values.yaml)
 
 After editing the `values.yaml` file, upgrade the helm chart.
 ```bash
