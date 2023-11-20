@@ -483,6 +483,16 @@ entries:
   identity:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-11-20T12:02:59.903738149Z"
+    description: SpaceONE identity Helm chart for Kubernetes
+    digest: cc7e28880ed90460de064e8c01978085aa21a13472372d933d2cb94e275ef656
+    name: identity
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/identity-1.3.11/identity-1.3.11.tgz
+    version: 1.3.11
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2023-01-09T08:48:53.124788356Z"
     description: SpaceONE identity Helm chart for Kubernetes
     digest: fc0704640a8ea9531daa5b03e12b0d51719c6c7a39520d887612e7b4e464c0df
@@ -7333,4 +7343,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-11-20T11:46:13.370320621Z"
+generated: "2023-11-20T12:02:59.904539726Z"
