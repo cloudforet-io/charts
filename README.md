@@ -97,7 +97,7 @@ wget https://raw.githubusercontent.com/cloudforet-io/charts/master/examples/init
 ```
 And execute the following command.
 ```bash
-helm install initializer cloudforet/spaceone-initializer -n spaceone -f initializer.yaml
+helm install cloudforet-initializer cloudforet/spaceone-initializer -n spaceone -f initializer.yaml
 ```
 
 For more information about the initializer, please refer the [spaceone-initializer](https://github.com/cloudforet-io/spaceone-initializer).
@@ -194,7 +194,7 @@ console:
 -     - domain-1234567890ab
 ```
 
-From version 1.12, `Identity` support SMTP and it is Required. So, please add following lines.
+From version 1.12, `Identity` support SMTP. So, if you want, please add following lines.
 ```diff
 identity:
   ...
