@@ -214,33 +214,6 @@ identity:
       ...
 ```
 
-### 2) Upgrade the Helm Chart
-
-1. Upgrade helm repository 
-```bash
-helm repo update
-```
-
-2. Upgrade cloudforet with helm
-```bash
-helm upgrade cloudforet cloudforet/spaceone -n spaceone -f values.yaml
-```
-
-3. Migrate Database using [DB-Migration](https://github.com/cloudforet-io/db-migration/)
-> **Please check version.**  
-This guide support upgrade version from 1.11 to 1.12. Older versions need to migrate each script step by step.
-```bash
-/db-migration/src/migrate.py 1.12.0 -f config.yaml
-/db-migration/src/migrate.py 1.12.1 -f config.yaml
-/db-migration/src/migrate.py 1.12.2 -f config.yaml
-```
-
-4. After Migration, delete all pods for restart.
-
-```bash
-kubectl delete po -n spaceone -l app.kubernetes.io/instance=cloudforet
-```
-
 ## Uninstall
 You can uninstall the cloudforet with the following command.
 
