@@ -748,6 +748,16 @@ entries:
   plugin:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-12-20T05:58:44.981839334Z"
+    description: SpaceONE plugin Helm chart for Kubernetes
+    digest: 18945d2b7ad4cd2766e77b590504623db3f65a4b7b7661113594291e2edf8181
+    name: plugin
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/plugin-1.3.11/plugin-1.3.11.tgz
+    version: 1.3.11
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2023-12-18T14:45:27.125933104Z"
     description: SpaceONE plugin Helm chart for Kubernetes
     digest: 47b49e055f3b800e36e5b655de1e1a31efa7d66ab6f9fa07d29c3ac9728381f0
@@ -7823,4 +7833,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-12-19T04:36:35.409967421Z"
+generated: "2023-12-20T05:58:44.982688094Z"
