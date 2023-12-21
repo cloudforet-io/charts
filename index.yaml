@@ -1602,6 +1602,94 @@ entries:
     - https://github.com/cloudforet-io/charts/releases/download/spaceone-2.0.0-dev1/spaceone-2.0.0-dev1.tgz
     version: 2.0.0-dev1
   - apiVersion: v2
+    appVersion: 1.12.12
+    created: "2023-12-21T08:02:32.80518432Z"
+    dependencies:
+    - condition: console.enabled
+      name: console
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.2.17
+    - condition: console-api.enabled
+      name: console-api
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.1.12
+    - condition: identity.enabled
+      name: identity
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.10
+    - condition: secret.enabled
+      name: secret
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.12
+    - condition: repository.enabled
+      name: repository
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.9
+    - condition: plugin.enabled
+      name: plugin
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.9
+    - condition: config.enabled
+      name: config
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.9
+    - condition: inventory.enabled
+      name: inventory
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.16
+    - condition: monitoring.enabled
+      name: monitoring
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.21
+    - condition: statistics.enabled
+      name: statistics
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.11
+    - condition: cost-analysis.enabled
+      name: cost-analysis
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.14
+    - condition: notification.enabled
+      name: notification
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.15
+    - condition: board.enabled
+      name: board
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.10
+    - condition: file-manager.enabled
+      name: file-manager
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.4
+    - condition: dashboard.enabled
+      name: dashboard
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.10
+    - condition: console-api-v2.enabled
+      name: console-api-v2
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.0.5
+    - condition: supervisor.enabled
+      name: supervisor
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.1.14
+    - condition: marketplace-assets.enabled
+      name: marketplace-assets
+      repository: https://cloudforet-io.github.io/charts
+      version: '>=1.0.0'
+    - condition: spacectl.enabled
+      name: spacectl
+      repository: https://cloudforet-io.github.io/charts
+      version: '>=1.0.0'
+    description: A Helm chart for SpaceONE
+    digest: c084970d06c75aadbd56bd4244ec4b2bdc25237d68a331f8fbd0fee14fe50c9e
+    home: https://www.spaceone.org
+    name: spaceone
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spaceone-1.12.12/spaceone-1.12.12.tgz
+    version: 1.12.12
+  - apiVersion: v2
     appVersion: 1.12.11
     created: "2023-12-08T14:06:07.017535888Z"
     dependencies:
@@ -7842,16 +7930,6 @@ entries:
   statistics:
   - apiVersion: v2
     appVersion: 1.x.y
-    created: "2023-12-21T08:01:53.916439323Z"
-    description: SpaceONE statistics Helm chart for Kubernetes
-    digest: a64c027cb58f0dbd00aeacf5e4b07b0b6226a0e665eb9eb5934ac92d0c2a5dcb
-    name: statistics
-    type: application
-    urls:
-    - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.13/statistics-1.3.13.tgz
-    version: 1.3.13
-  - apiVersion: v2
-    appVersion: 1.x.y
     created: "2023-11-20T13:08:06.578010295Z"
     description: SpaceONE statistics Helm chart for Kubernetes
     digest: 4535d6b5e5a80fff9cab65d49174e9058ca97add914ff84ad3df81b6ccc9f4b6
@@ -7981,4 +8059,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-12-21T08:01:53.917192375Z"
+generated: "2023-12-21T08:02:32.805987894Z"
