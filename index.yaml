@@ -706,6 +706,16 @@ entries:
   monitoring:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2023-12-21T11:57:10.98999872Z"
+    description: SpaceONE monitoring Helm chart for Kubernetes
+    digest: c8a0562fac6663d56f18bcc37936171e3e3defefd5b77e939b2360c6f95c00c1
+    name: monitoring
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/monitoring-1.3.24/monitoring-1.3.24.tgz
+    version: 1.3.24
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2023-12-21T10:22:57.869785163Z"
     description: SpaceONE monitoring Helm chart for Kubernetes
     digest: 814e4751d542ebe3de396bdad5b2855d7271208bb7f23c83eed0a22e30a6139b
@@ -8315,4 +8325,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2023-12-21T10:25:21.702699604Z"
+generated: "2023-12-21T11:57:10.990799916Z"
