@@ -228,16 +228,6 @@ entries:
   console-api-v2:
   - apiVersion: v2
     appVersion: 1.x.y
-    created: "2024-01-05T10:56:21.106435362Z"
-    description: Cloudforet Console API v2 Helm chart for Kubernetes
-    digest: 0ca9fd83a060b5c38c41c72e97fbab54fed1ff98e672fcb63d41583acfe6fd84
-    name: console-api-v2
-    type: application
-    urls:
-    - https://github.com/cloudforet-io/charts/releases/download/console-api-v2-1.0.8/console-api-v2-1.0.8.tgz
-    version: 1.0.8
-  - apiVersion: v2
-    appVersion: 1.x.y
     created: "2023-11-20T04:26:43.766167172Z"
     description: Cloudforet Console API v2 Helm chart for Kubernetes
     digest: 51f43c4af1eb1f70c049fe22c2840ce2017c1340cb4ceda13c77d9711412a7c1
@@ -317,6 +307,16 @@ entries:
     - https://github.com/cloudforet-io/charts/releases/download/console-api-v2-1.0.0/console-api-v2-1.0.0.tgz
     version: 1.0.0
   cost-analysis:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-01-05T10:57:12.675749288Z"
+    description: SpaceONE Cost Analysis Helm chart for Kubernetes
+    digest: cd6b3b599ee062f581b52cb911c5f4781e651412235261cd210763e1992f3b82
+    name: cost-analysis
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/cost-analysis-1.4.0/cost-analysis-1.4.0.tgz
+    version: 1.4.0
   - apiVersion: v2
     appVersion: 1.x.y
     created: "2023-12-21T08:03:44.657613395Z"
@@ -8453,4 +8453,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2024-01-05T10:56:21.107417404Z"
+generated: "2024-01-05T10:57:12.676592383Z"
