@@ -1,0 +1,131 @@
+#################################
+# Cloudforet Verion: 1.12.X
+# DB: MongoDB Atlas
+#################################
+
+
+########################
+# Disable
+# - mongodb POD
+# - marketplace-assets
+#######################
+mongodb:
+  enabled: false
+
+marketplace-assets:
+  enabled: false
+
+console:
+  production_json:
+    CONSOLE_API:
+      ENDPOINT: http://127.0.0.1:8081					# Change the endpoint
+    CONSOLE_API_V2:
+      ENDPOINT: http://127.0.0.1:8082					# Change the endpoint
+
+###############################
+# Update DB connections
+###############################
+secret:
+  enabled: true
+  application_grpc:
+    DATABASES:
+      default:
+        db: secret
+        read_preference: PRIMARY
+    BACKEND: MongoDBConnector
+    CONNECTORS:
+      MongoDBConnector:
+        host: mongodb+srv://XXXXXXXX.XXXXXXX.mongodb.net		# Change the endpoint
+        username: XXXXXXXXXXXXXXXX					# Change db username
+        password: XXXXXXXXXXXXXXXX					# Change db password
+
+cost-analysis:
+  enabled: true
+  scheduler: true
+  worker: true
+  replicas_worker: 1
+
+monitoring:
+  enabled: true
+  scheduler: true
+  worker: true
+  rest: true
+
+  application_grpc:
+    DATABASES:
+      default:
+        db: monitoring
+        read_preference: PRIMARY
+    INSTALLED_DATA_SOURCE_PLUGINS:
+      - name: AWS CloudWatch
+        plugin_info:
+          plugin_id: plugin-aws-cloudwatch-mon-datasource
+          provider: aws
+      - name: Azure Monitor
+        plugin_info:
+          plugin_id: plugin-azure-monitor-mon-datasource
+          provider: azure
+      - name: Google Cloud Monitoring
+        plugin_info:
+          plugin_id: plugin-google-stackdriver-mon-datasource
+          provider: google_cloud
+      - name: AWS CloudTrail
+        plugin_info:
+          plugin_id: plugin-aws-cloudtrail-mon-datasource
+          provider: aws
+      - name: Azure Activity Log
+        plugin_info:
+          plugin_id: plugin-azure-activity-log-mon-datasource
+          provider: azure
+
+  application_scheduler:
+    DATABASES:
+      default:
+        db: monitoring
+        read_preference: PRIMARY
+
+  application_worker:
+    DATABASES:
+      default:
+        db: monitoring
+        read_preference: PRIMARY
+
+supervisor:
+  enabled: true
+  image:
+    name: cloudforet/supervisor
+    version: 1.12.0
+  application_scheduler:
+    NAME: root
+    HOSTNAME: spaceone-plugin.svc.cluster.local
+    BACKEND: KubernetesConnector
+    CONNECTORS:
+      RepositoryConnector:
+        endpoint:
+          v1: grpc://repository:50051
+      PluginConnector:
+        endpoint:
+          v1: grpc://plugin:50051
+      KubernetesConnector:
+        namespace: spaceone-plugin
+        start_port: 50051
+        end_port: 50052
+        headless: true
+        replica:
+          inventory.Collector: 1
+          monitoring.DataSource: 1
+          cost_analysis.DataSource: 1
+
+#############################################
+# Update
+# - TOKEN
+# - DB connections
+############################################
+global:
+  shared_conf:
+    TOKEN: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXN		# change the token value
+    DATABASES:
+      default:
+        host: mongodb+srv://XXXXXXXX.XXXXXXX.mongodb.net				# change the endpoint
+        username: XXXXXXXXXXXXXXXX							# change db user
+        password: XXXXXXXXXXXXXXXX							# change db password
