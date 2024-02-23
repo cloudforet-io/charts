@@ -1011,6 +1011,16 @@ entries:
   search:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2024-02-23T17:13:10.331826596Z"
+    description: SpaceONE search Helm chart for Kubernetes
+    digest: 50eb9750afadab8ae710b3589ce6f8de54255a0d44b74086d8c8380cd466ff47
+    name: search
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/search-1.0.1/search-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2024-02-23T16:01:11.334660327Z"
     description: SpaceONE search Helm chart for Kubernetes
     digest: 49cb11ad737a2cb50e1133e2525785c69693448160c4fc387818ae36b9ad60a9
@@ -9056,4 +9066,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2024-02-23T16:30:58.493494765Z"
+generated: "2024-02-23T17:13:10.332829848Z"
