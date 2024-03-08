@@ -1608,6 +1608,98 @@ entries:
     version: 2.0.0-dev3
   - apiVersion: v2
     appVersion: 2.0.0
+    created: "2024-03-08T13:55:18.156696875Z"
+    dependencies:
+    - condition: console.enabled
+      name: console
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.2.17
+    - condition: console-api.enabled
+      name: console-api
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.1.12
+    - condition: identity.enabled
+      name: identity
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.13
+    - condition: secret.enabled
+      name: secret
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.13
+    - condition: repository.enabled
+      name: repository
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.11
+    - condition: plugin.enabled
+      name: plugin
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.11
+    - condition: config.enabled
+      name: config
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.10
+    - condition: inventory.enabled
+      name: inventory
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.19
+    - condition: monitoring.enabled
+      name: monitoring
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.24
+    - condition: statistics.enabled
+      name: statistics
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.18
+    - condition: cost-analysis.enabled
+      name: cost-analysis
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.4.0
+    - condition: notification.enabled
+      name: notification
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.16
+    - condition: board.enabled
+      name: board
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.12
+    - condition: file-manager.enabled
+      name: file-manager
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.6
+    - condition: dashboard.enabled
+      name: dashboard
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.3.12
+    - condition: console-api-v2.enabled
+      name: console-api-v2
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.0.9
+    - condition: search.enabled
+      name: search
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.0.1
+    - condition: supervisor.enabled
+      name: supervisor
+      repository: https://cloudforet-io.github.io/charts
+      version: 1.1.15
+    - condition: marketplace-assets.enabled
+      name: marketplace-assets
+      repository: https://cloudforet-io.github.io/charts
+      version: '>=1.0.0'
+    - condition: spacectl.enabled
+      name: spacectl
+      repository: https://cloudforet-io.github.io/charts
+      version: '>=1.0.0'
+    description: A Helm chart for SpaceONE
+    digest: dc2442a3d0439a46384015224eecc20d951c73d58abed260abf4ecf3eba0f0a5
+    home: https://www.spaceone.org
+    name: spaceone
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spaceone-2.0.0-dev22/spaceone-2.0.0-dev22.tgz
+    version: 2.0.0-dev22
+  - apiVersion: v2
+    appVersion: 2.0.0
     created: "2024-03-08T13:37:27.048133595Z"
     dependencies:
     - condition: console.enabled
@@ -9270,4 +9362,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.7/supervisor-1.1.7.tgz
     version: 1.1.7
-generated: "2024-03-08T13:52:52.017405058Z"
+generated: "2024-03-08T13:55:18.157597848Z"
