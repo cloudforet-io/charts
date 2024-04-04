@@ -1,0 +1,27 @@
+dependencies:
+- name: grafana-agent
+  repository: https://grafana.github.io/helm-charts
+  version: 0.37.0
+- name: grafana-agent
+  repository: https://grafana.github.io/helm-charts
+  version: 0.37.0
+- name: grafana-agent
+  repository: https://grafana.github.io/helm-charts
+  version: 0.37.0
+- name: kube-state-metrics
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 5.18.0
+- name: prometheus-node-exporter
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 4.32.0
+- name: prometheus-operator-crds
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 10.0.0
+- name: prometheus-windows-exporter
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 0.3.1
+- name: opencost
+  repository: https://opencost.github.io/opencost-helm-chart
+  version: 1.33.1
+digest: sha256:829140f8e5d474204785b623af1fca296f0a7532dd4ead8ac8ee95a29f790a70
+generated: "2024-04-03T00:16:32.523019666Z"
