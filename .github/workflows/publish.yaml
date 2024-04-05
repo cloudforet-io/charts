@@ -1,4 +1,4 @@
-name: Publish Helm Chart
+name: Publish Helm Charts
 
 on:
   push:
@@ -8,9 +8,10 @@ on:
       - "charts/**"
     tags:
       - "chart-*"
+    workflow_dispatch:
 
 jobs:
-  release-chart:
+  release-charts:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,34 +23,45 @@ jobs:
           chmod 700 get_helm.sh
           ./get_helm.sh
 
-      - name: Package Helm chart
+      - name: Install GitHub CLI
+        run: |
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install gh
+
+      - name: Package and Release Helm charts
         run: |
           mkdir ./release
-          helm package charts/my-chart --destination ./release
+          for chart in charts/*; do
+            if [ -d "$chart" ]; then
+              chart_name=$(basename "$chart")
+              helm package "$chart" --destination ./release
+              chart_version=$(grep 'version:' "$chart/Chart.yaml" | cut -d ' ' -f 2)
+              chart_file="${chart_name}-${chart_version}.tgz"
+              echo "Processing $chart_file..."
 
-      - name: Get the version
-        id: get_version
+              git_tag="chart-${chart_name}-${chart_version}"
+              release_name="${chart_name} Chart Release ${chart_version}"
+
+              echo "Creating GitHub Release $release_name..."
+              gh release create "$git_tag" "./release/$chart_file" --title "$release_name" --notes "Release of $chart_name version $chart_version"
+              
+              echo "$chart_name chart released successfully."
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Git for GitHub Pages
         run: |
-          VERSION=$(cat charts/my-chart/Chart.yaml | grep version: | cut -d ' ' -f 2)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git fetch --depth=1 origin gh-pages
+          git checkout -b gh-pages origin/gh-pages
 
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: chart-${{ env.VERSION }}
-          release_name: Chart Release ${{ env.VERSION }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Helm chart to GitHub Release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release/my-chart-${{ env.VERSION }}.tgz
-          asset_name: my-chart-${{ env.VERSION }}.tgz
-          asset_content_type: application/octet-stream
+      - name: Update index.yaml
+        run: |
+          helm repo index ./release --url https://github.com/cloudforet-io/charts/releases/download/
+          git add ./release/index.yaml
+          git commit -s -m "Update index.yaml"
+          git push origin gh-pages
