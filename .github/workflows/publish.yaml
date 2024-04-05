@@ -46,8 +46,8 @@ jobs:
               release_name="${chart_name} Chart Release ${chart_version}"
 
               echo "Creating GitHub Release $release_name..."
-              gh release create "$git_tag" "./release/$chart_file" --title "$release_name" --notes "Release of $chart_name version $chart_version"
-              
+              gh release create "$git_tag" "./release/$chart_file" --title "$release_name" --notes "Release of $chart_name version $chart_version" --target "master"
+
               echo "$chart_name chart released successfully."
             fi
           done
@@ -62,7 +62,7 @@ jobs:
 
       - name: Update index.yaml
         run: |
-          helm repo index ./release --url https://github.com/cloudforet-io/charts/releases/download/
+          helm repo index ./release --url https://github.com/cloudforet-io/charts/releases/download/ --merge ./index.yaml
           git add ./release/index.yaml
           git commit -s -m "Update index.yaml"
           git push origin gh-pages
