@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'charts/**'
+      - "charts/**"
     tags:
-      - 'chart-*'
+      - "chart-*"
 
 jobs:
   release-chart:
@@ -16,8 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Configure Helm
-        run: helm version
+      - name: Install Helm
+        run: |
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh
 
       - name: Package Helm chart
         run: |
@@ -26,7 +29,9 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::$(cat charts/my-chart/Chart.yaml | grep version: | cut -d ' ' -f 2)
+        run: |
+          VERSION=$(cat charts/my-chart/Chart.yaml | grep version: | cut -d ' ' -f 2)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         id: create_release
@@ -34,8 +39,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: chart-${{ steps.get_version.outputs.VERSION }}
-          release_name: Chart Release ${{ steps.get_version.outputs.VERSION }}
+          tag_name: chart-${{ env.VERSION }}
+          release_name: Chart Release ${{ env.VERSION }}
           draft: false
           prerelease: false
 
@@ -45,7 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release/my-chart-${{ steps.get_version.outputs.VERSION }}.tgz
-          asset_name: my-chart-${{ steps.get_version.outputs.VERSION }}.tgz
+          asset_path: ./release/my-chart-${{ env.VERSION }}.tgz
+          asset_name: my-chart-${{ env.VERSION }}.tgz
           asset_content_type: application/octet-stream
-
