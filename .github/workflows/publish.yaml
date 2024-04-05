@@ -35,11 +35,12 @@ jobs:
           mkdir ./release
           for chart in charts/*; do
             if [ -d "$chart" ]; then
-              chart_name=$(basename "$chart")
+              chart_name=$(basename "$chart" | tr -d '\n')
               helm package "$chart" --destination ./release
-              chart_version=$(grep 'version:' "$chart/Chart.yaml" | cut -d ' ' -f 2)
+              chart_version=$(grep 'version:' "$chart/Chart.yaml" | cut -d ' ' -f 2 | tr -d '\n')
               chart_file="${chart_name}-${chart_version}.tgz"
-              echo "Processing $chart_file..."
+              echo "Processing... File path: ./release/$chart_file"
+              ls -l ./release
 
               git_tag="chart-${chart_name}-${chart_version}"
               release_name="${chart_name} Chart Release ${chart_version}"
