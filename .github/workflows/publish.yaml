@@ -1,15 +1,55 @@
-name: Publish Helm charts
+name: Publish Helm Chart
+
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches:
+      - master
+    paths:
+      - "charts/**"
+    tags:
+      - "chart-*"
 
 jobs:
-  publish-chart:
+  release-chart:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish Helm charts
-        uses: stefanprodan/helm-gh-pages@master
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Helm
+        run: |
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh
+
+      - name: Package Helm chart
+        run: |
+          mkdir ./release
+          helm package charts/my-chart --destination ./release
+
+      - name: Get the version
+        id: get_version
+        run: |
+          VERSION=$(cat charts/my-chart/Chart.yaml | grep version: | cut -d ' ' -f 2)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: chart-${{ env.VERSION }}
+          release_name: Chart Release ${{ env.VERSION }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Helm chart to GitHub Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release/my-chart-${{ env.VERSION }}.tgz
+          asset_name: my-chart-${{ env.VERSION }}.tgz
+          asset_content_type: application/octet-stream
