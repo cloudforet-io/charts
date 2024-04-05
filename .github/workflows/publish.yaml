@@ -3,7 +3,7 @@ name: Publish Helm Chart
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - "charts/**"
     tags:
