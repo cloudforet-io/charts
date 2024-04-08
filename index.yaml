@@ -55,6 +55,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/cost-analysis-1.4.0/cost-analysis-1.4.0.tgz
     version: 1.4.0
+  file-manager:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:51:49.200755001Z"
+    description: SpaceONE File Manager Helm chart for Kubernetes
+    digest: 3fb7dac418a8a15ba9fa02811f287c41b0d2b6316a81ccf2f18091d823f5f330
+    name: file-manager
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/file-manager-1.3.6/file-manager-1.3.6.tgz
+    version: 1.3.6
   identity:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -154,4 +165,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.18/statistics-1.3.18.tgz
     version: 1.3.18
-generated: "2024-04-08T07:50:27.417908399Z"
+generated: "2024-04-08T07:51:49.200766993Z"
