@@ -55,6 +55,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/cost-analysis-1.4.0/cost-analysis-1.4.0.tgz
     version: 1.4.0
+  dashboard:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:53:02.021495321Z"
+    description: SpaceONE dashboard Helm chart for Kubernetes
+    digest: 731e38c5583a46bf10b801c1b2169aeb8b4c1944d8bb072148e2019f4394129a
+    name: dashboard
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/dashboard-1.3.12/dashboard-1.3.12.tgz
+    version: 1.3.12
   file-manager:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -165,4 +176,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.18/statistics-1.3.18.tgz
     version: 1.3.18
-generated: "2024-04-08T07:51:49.200766993Z"
+generated: "2024-04-08T07:53:02.021502725Z"
