@@ -33,6 +33,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/identity-1.3.14/identity-1.3.14.tgz
     version: 1.3.14
+  repository:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:34:38.409916579Z"
+    description: SpaceONE repository Helm chart for Kubernetes
+    digest: 436369c9c4b0cf49ff082aba02c36b330de8ed34c3a1203a0b8b2c85832c43db
+    name: repository
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/repository-1.3.11/repository-1.3.11.tgz
+    version: 1.3.11
   search:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -55,4 +66,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.13/secret-1.3.13.tgz
     version: 1.3.13
-generated: "2024-04-08T07:32:46.163167793Z"
+generated: "2024-04-08T07:34:38.409928932Z"
