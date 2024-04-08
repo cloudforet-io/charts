@@ -176,6 +176,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.13/secret-1.3.13.tgz
     version: 1.3.13
+  spacectl:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:56:19.572315939Z"
+    description: A spacectl chart for Kubernetes
+    digest: a4f578b970e64e7c840cc2b1079530996566ff8b17dc5001d01d3ffcc5be52e2
+    name: spacectl
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/spacectl-1.0.8/spacectl-1.0.8.tgz
+    version: 1.0.8
   statistics:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -198,4 +209,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2024-04-08T07:54:57.185116433Z"
+generated: "2024-04-08T07:56:19.572325306Z"
