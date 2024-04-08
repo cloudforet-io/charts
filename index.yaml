@@ -55,6 +55,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/inventory-1.3.19/inventory-1.3.19.tgz
     version: 1.3.19
+  monitoring:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:45:24.054109447Z"
+    description: SpaceONE monitoring Helm chart for Kubernetes
+    digest: e6dbe6f2a7f153721d3f45cd613b173ac8e4f1f3154b7dcb1c447d6f1be3140a
+    name: monitoring
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/monitoring-1.3.24/monitoring-1.3.24.tgz
+    version: 1.3.24
   plugin:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -99,4 +110,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.13/secret-1.3.13.tgz
     version: 1.3.13
-generated: "2024-04-08T07:43:54.146149833Z"
+generated: "2024-04-08T07:45:24.054142108Z"
