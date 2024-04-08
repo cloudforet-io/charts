@@ -187,4 +187,15 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.18/statistics-1.3.18.tgz
     version: 1.3.18
-generated: "2024-04-08T07:54:04.229726656Z"
+  supervisor:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:54:57.185104301Z"
+    description: SpaceONE supervisor Helm chart for Kubernetes
+    digest: deac0fe1915be700d85b2d94d21ef918633e3e9e4c10c4f9e406e8809c4a9c08
+    name: supervisor
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
+    version: 1.1.15
+generated: "2024-04-08T07:54:57.185116433Z"
