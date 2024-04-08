@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  board:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:50:27.417895775Z"
+    description: SpaceONE board Helm chart for Kubernetes
+    digest: 019c97bb9bc88707633dd681ee912831173543826eb0876a9486ea71d53d1ebc
+    name: board
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/board-1.3.12/board-1.3.12.tgz
+    version: 1.3.12
   config:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -143,4 +154,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.18/statistics-1.3.18.tgz
     version: 1.3.18
-generated: "2024-04-08T07:49:11.829903203Z"
+generated: "2024-04-08T07:50:27.417908399Z"
