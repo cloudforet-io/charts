@@ -110,4 +110,15 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.13/secret-1.3.13.tgz
     version: 1.3.13
-generated: "2024-04-08T07:45:24.054142108Z"
+  statistics:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:47:09.365986637Z"
+    description: SpaceONE statistics Helm chart for Kubernetes
+    digest: 28ace0780fd84c1663eb310d95aec0a891ac2b4924e9a98ff86cd3b4d8c863fc
+    name: statistics
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.18/statistics-1.3.18.tgz
+    version: 1.3.18
+generated: "2024-04-08T07:47:09.365993409Z"
