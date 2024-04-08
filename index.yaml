@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/console-1.2.17/console-1.2.17.tgz
     version: 1.2.17
+  console-api:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:29:36.77988657Z"
+    description: SpaceONE console-api Helm chart for Kubernetes
+    digest: 8d338e95104b153fd2d060b0b5ed62c51070cc8ea192c5c92f9b045746054280
+    name: console-api
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/console-api-1.1.12/console-api-1.1.12.tgz
+    version: 1.1.12
   identity:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -33,4 +44,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/search-1.0.1/search-1.0.1.tgz
     version: 1.0.1
-generated: "2024-04-08T07:26:08.368851914Z"
+generated: "2024-04-08T07:29:36.779895857Z"
