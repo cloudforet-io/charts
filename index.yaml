@@ -77,6 +77,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/monitoring-1.3.24/monitoring-1.3.24.tgz
     version: 1.3.24
+  notification:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:49:11.829894838Z"
+    description: SpaceONE notification Helm chart for Kubernetes
+    digest: cda78006f54ed623ec16958a3ed693746bacaee3e86f5675b5b40cacf80fbc59
+    name: notification
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/notification-1.3.16/notification-1.3.16.tgz
+    version: 1.3.16
   plugin:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -132,4 +143,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/statistics-1.3.18/statistics-1.3.18.tgz
     version: 1.3.18
-generated: "2024-04-08T07:48:06.870680404Z"
+generated: "2024-04-08T07:49:11.829903203Z"
