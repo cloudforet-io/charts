@@ -44,6 +44,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/identity-1.3.14/identity-1.3.14.tgz
     version: 1.3.14
+  inventory:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2024-04-08T07:43:54.146143972Z"
+    description: SpaceONE inventory Helm chart for Kubernetes
+    digest: b1dcb852d583e444f22d0bdbd0b4f4ea4d4d70d99b0af2cebdebcb476c0e48a4
+    name: inventory
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/inventory-1.3.19/inventory-1.3.19.tgz
+    version: 1.3.19
   plugin:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -88,4 +99,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.13/secret-1.3.13.tgz
     version: 1.3.13
-generated: "2024-04-08T07:39:38.555966867Z"
+generated: "2024-04-08T07:43:54.146149833Z"
