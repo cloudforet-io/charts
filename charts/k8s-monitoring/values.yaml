@@ -686,6 +686,11 @@ metrics:
     filters:
       metric: []
       datapoint: []
+    transforms:
+      resource:
+        - key: ""
+          value: ""
+          action: ""
 
 # Settings related to capturing and forwarding logs
 logs:
