@@ -1,0 +1,7 @@
+.git
+.gitignore
+.idea
+ci
+test
+schema-mods
+Makefile
