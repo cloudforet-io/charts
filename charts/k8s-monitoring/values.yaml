@@ -220,6 +220,13 @@ externalServices:
     # This option will be deprecated and removed soon. Please switch to `tls` and use yaml format.
     tlsOptions: ""
 
+  pyroscope:
+    hostKey: ""
+    basicAuth:
+      usernameKey: ""
+      passwordKey: ""
+    tenantIdKey: ""
+
 # Settings related to capturing and forwarding metrics
 metrics:
   # -- Capture and forward metrics
