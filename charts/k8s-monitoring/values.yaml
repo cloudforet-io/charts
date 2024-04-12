@@ -227,6 +227,9 @@ externalServices:
       passwordKey: ""
     tenantIdKey: ""
 
+profiles:
+  enabled: false
+
 # Settings related to capturing and forwarding metrics
 metrics:
   # -- Capture and forward metrics
