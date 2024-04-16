@@ -527,7 +527,7 @@ metrics:
   # Metrics from the API Server
   apiserver:
     # -- Scrape metrics from the API Server
-    enabled: false
+    enabled: true
 
     # -- How frequently to scrape metrics from the API Server
     # Overrides metrics.scrapeInterval
