@@ -3,7 +3,7 @@
 
 # k8s-monitoring
 
-![Version: 0.13.1](https://img.shields.io/badge/Version-0.13.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.1.3](https://img.shields.io/badge/AppVersion-2.1.3-informational?style=flat-square)
+![Version: 0.13.4](https://img.shields.io/badge/Version-0.13.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.2.0](https://img.shields.io/badge/AppVersion-2.2.0-informational?style=flat-square)
 
 A Helm chart for gathering, scraping, and forwarding Kubernetes telemetry data to a Grafana Stack.
 
@@ -101,14 +101,14 @@ The Prometheus and Loki services may be hosted on the same cluster, or remotely 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://grafana.github.io/helm-charts | grafana-agent | 0.37.0 |
-| https://grafana.github.io/helm-charts | grafana-agent-events(grafana-agent) | 0.37.0 |
-| https://grafana.github.io/helm-charts | grafana-agent-logs(grafana-agent) | 0.37.0 |
-| https://grafana.github.io/helm-charts | grafana-agent-profiles(grafana-agent) | 0.37.0 |
-| https://opencost.github.io/opencost-helm-chart | opencost | 1.33.1 |
+| https://grafana.github.io/helm-charts | grafana-agent | 0.38.0 |
+| https://grafana.github.io/helm-charts | grafana-agent-events(grafana-agent) | 0.38.0 |
+| https://grafana.github.io/helm-charts | grafana-agent-logs(grafana-agent) | 0.38.0 |
+| https://grafana.github.io/helm-charts | grafana-agent-profiles(grafana-agent) | 0.38.0 |
+| https://opencost.github.io/opencost-helm-chart | opencost | 1.33.3 |
 | https://prometheus-community.github.io/helm-charts | kube-state-metrics | 5.18.1 |
 | https://prometheus-community.github.io/helm-charts | prometheus-node-exporter | 4.32.0 |
-| https://prometheus-community.github.io/helm-charts | prometheus-operator-crds | 10.0.0 |
+| https://prometheus-community.github.io/helm-charts | prometheus-operator-crds | 11.0.0 |
 | https://prometheus-community.github.io/helm-charts | prometheus-windows-exporter | 0.3.1 |
 
 ## Values
