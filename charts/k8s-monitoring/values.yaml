@@ -1237,7 +1237,6 @@ grafana-agent:
     type: statefulset
     nodeSelector:
       kubernetes.io/os: linux
-      Category: mimir
 
     # This chart creates the credentials for Prometheus and Loki. This section
     # connects those credentials into the Grafana Agent pod.
