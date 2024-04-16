@@ -1169,7 +1169,7 @@ opencost:
         # @ignored -- This skips including these values in README.md
         enabled: true
         # -- The URL for Prometheus queries. It should match externalService.prometheus.host + "/api/prom"
-        url: ""
+        url: "https://prom.example.com/api/prom"
       # @ignored -- This skips including these values in README.md
       internal:
         enabled: false
