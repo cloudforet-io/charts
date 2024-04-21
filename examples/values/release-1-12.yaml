@@ -1,0 +1,126 @@
+marketplace-assets:
+  enabled: false
+
+console:
+  enable: true
+  image:
+    name: cloudforet/console
+    version: 1.12.12
+  production_json:
+    CONSOLE_API:
+      ENDPOINT: http://localhost:8081
+    CONSOLE_API_V2:
+      ENDPOINT: http://localhost:8082
+    DOMAIN_IMAGE:
+      CI_LOGO: https://raw.githubusercontent.com/cloudforet-io/artwork/main/logo/symbol/Cloudforet_symbol--dark-navy.svg
+      CI_TEXT_WITH_TYPE: https://raw.githubusercontent.com/cloudforet-io/artwork/main/logo/wordmark/Cloudforet_wordmark--primary.svg
+      SIGN_IN: https://raw.githubusercontent.com/cloudforet-io/artwork/main/illustrations/happy-new-year-2024.png
+      CI_TEXT: https://raw.githubusercontent.com/cloudforet-io/artwork/main/logo/wordmark/Cloudforet_wordmark--primary.svg
+
+monitoring:
+  enabled: true
+  scheduler: false
+  worker: false
+  rest: true
+  image:
+    name: cloudforet/monitoring
+    version: 1.12.0
+
+  application_grpc:
+    DATABASES:
+      default:
+        db: monitoring
+        read_preference: PRIMARY
+    INSTALLED_DATA_SOURCE_PLUGINS:
+      - name: AWS CloudWatch
+        plugin_info:
+          plugin_id: plugin-aws-cloudwatch-mon-datasource
+          provider: aws
+      - name: Azure Monitor
+        plugin_info:
+          plugin_id: plugin-azure-monitor-mon-datasource
+          provider: azure
+      - name: Google Cloud Monitoring
+        plugin_info:
+          plugin_id: plugin-google-stackdriver-mon-datasource
+          provider: google_cloud
+      - name: AWS CloudTrail
+        plugin_info:
+          plugin_id: plugin-aws-cloudtrail-mon-datasource
+          provider: aws
+      - name: Azure Activity Log
+        plugin_info:
+          plugin_id: plugin-azure-activity-log-mon-datasource
+          provider: azure
+
+  application_scheduler:
+    DATABASES:
+      default:
+        db: monitoring
+        read_preference: PRIMARY
+
+  application_worker:
+    DATABASES:
+      default:
+        db: monitoring
+        read_preference: PRIMARY
+
+cost-analysis:
+  enabled: true
+  scheduler: true
+  worker: true
+  replicas_worker: 1
+  image:
+    name: cloudforet/cost-analysis
+    version: 1.12.4
+
+  application_grpc:
+    DATABASES:
+      default:
+        db: cost-analysis
+        read_preference: PRIMARY
+
+  application_scheduler:
+    DATABASES:
+      default:
+        db: cost-analysis
+        read_preference: PRIMARY
+
+  application_worker:
+    DATABASES:
+      default:
+        db: cost-analysis
+        read_preference: PRIMARY
+
+supervisor:
+  enabled: true
+  image:
+    name: cloudforet/supervisor
+    version: 1.12.0
+  application_scheduler:
+    NAME: root
+    HOSTNAME: cloudforet-plugin.svc.cluster.local
+    BACKEND: KubernetesConnector
+    CONNECTORS:
+      RepositoryConnector:
+        endpoint:
+          v1: grpc://repository:50051
+      PluginConnector:
+        endpoint:
+          v1: grpc://plugin:50051
+      KubernetesConnector:
+        namespace: cloudforet-plugin
+        start_port: 50051
+        end_port: 50052
+        headless: true
+        replica:
+          inventory.Collector: 1
+          monitoring.DataSource: 1
+          cost_analysis.DataSource: 1
+
+
+global:
+  namespace: cloudforet
+  supervisor_namespace: cloudforet
+  shared_conf:
+    TOKEN: 'CHANGE_ME'
