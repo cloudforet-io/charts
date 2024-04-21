@@ -3,7 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: supervisor-plugin-control-role
-  namespace: spaceone-plugin 
+  namespace: cloudforet-plugin 
 rules:
 - apiGroups:
   - "*"
@@ -24,7 +24,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: supervisor-role-binding
-  namespace: spaceone-plugin 
+  namespace: cloudforet-plugin 
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -32,4 +32,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: spaceone 
+  namespace: cloudforet
