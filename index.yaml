@@ -14,7 +14,7 @@ entries:
   k8s-monitoring:
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-04-16T04:29:14.328439196Z"
+    created: "2024-05-02T06:35:18.187577379Z"
     dependencies:
     - name: grafana-agent
       repository: https://grafana.github.io/helm-charts
@@ -53,10 +53,10 @@ entries:
     - condition: opencost.enabled
       name: opencost
       repository: https://opencost.github.io/opencost-helm-chart
-      version: 1.33.3
+      version: 1.35.0
     description: A Helm chart for gathering, scraping, and forwarding Kubernetes telemetry
       data to a Grafana Stack.
-    digest: d2827f5e2ee7e23fff4ac1c039c107c5f86d123e424b9d2ed790191c23f6ed41
+    digest: 0bd812fc35b4d02aab6023700488cee7fd51b5f8a120553b155c7b379a25159e
     icon: https://raw.githubusercontent.com/grafana/grafana/main/public/img/grafana_icon.svg
     maintainers:
     - email: pete.wall@grafana.com
@@ -128,4 +128,4 @@ entries:
     urls:
     - https://yjinjo.github.io/charts/k8s-monitoring-0.13.1.tgz
     version: 0.13.1
-generated: "2024-04-16T04:29:14.295720514Z"
+generated: "2024-05-02T06:35:18.154945855Z"
