@@ -83,7 +83,7 @@ externalServices:
         checkInterval: 1s
         # -- Maximum amount of memory targeted to be allocated by the process heap.
         limit: 0MiB
-    
+
     # Write-Ahead Log (WAL) settings. Only applies when protocol is "remote_write"
     wal:
       # -- How frequently to clean up the WAL.
@@ -315,7 +315,6 @@ metrics:
       # -- Annotation for setting the metrics scheme, default: http.
       metricsScheme: "k8s.grafana.com/metrics.scheme"
 
-
   # Metrics from Grafana Agent
   agent:
     # -- Scrape metrics from Grafana Agent
@@ -520,9 +519,11 @@ metrics:
         - metric: "machine_memory_bytes"
           labels: ["boot_id", "system_uuid"]
       # -- Only keep filesystem metrics that use the following physical devices
-      keepPhysicalFilesystemDevices: ["mmcblk.p.+", "nvme.+", "rbd.+", "sd.+", "vd.+", "xvd.+", "dasd.+"]
+      keepPhysicalFilesystemDevices:
+        ["mmcblk.p.+", "nvme.+", "rbd.+", "sd.+", "vd.+", "xvd.+", "dasd.+"]
       # -- Only keep network metrics that use the following physical devices
-      keepPhysicalNetworkDevices: ["en[ospx][0-9].*", "wlan[0-9].*", "eth[0-9].*"]
+      keepPhysicalNetworkDevices:
+        ["en[ospx][0-9].*", "wlan[0-9].*", "eth[0-9].*"]
 
   # Metrics from the API Server
   apiserver:
@@ -709,7 +710,6 @@ metrics:
     # -- Rule blocks to be added to the prometheus.relabel component for ServiceMonitor objects. ([docs](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.relabel/#rule-block))
     extraMetricRelabelingRules: ""
 
-
   kubernetesMonitoring:
     # -- Report telemetry about this Kubernetes Monitoring chart as a metric.
     enabled: true
@@ -852,7 +852,6 @@ profiles:
   #  namespaces: []
   #  # -- Rule blocks to be added to the discovery.relabel component for Java profile sources. ([docs](https://grafana.com/docs/agent/latest/flow/reference/components/discovery.relabel/#rule-block))
   #  extraRelabelingRules: ""
-
 
   pprof:
     # -- Gather profiles by scraping pprof HTTP endpoints
@@ -1049,7 +1048,6 @@ configAnalysis:
     # -- Optional set of image pull secrets.
     pullSecrets: []
 
-
 ## Global properties for image pulling override the values defined under `image.registry` and `configReloader.image.registry`.
 ## If you want to override only one image registry, use the specific fields but if you want to override them all, use `global.image.registry`
 global:
@@ -1180,17 +1178,16 @@ opencost:
     nodeSelector:
       kubernetes.io/os: linux
 
-
 # Settings for the Grafana Agent deployment that gathers metrics, and opens receivers for application data.
 # You can use this sections to make modifications to the Grafana Agent deployment.
 # See https://github.com/grafana/agent/tree/main/operations/helm/charts/grafana-agent for available values.
 # @ignored -- This skips including these values in README.md
 grafana-agent:
   agent:
-    clustering: {enabled: true}
+    clustering: { enabled: true }
 
     # This chart is creating the configuration, so the grafana-agent chart does not need to.
-    configMap: {create: false}
+    configMap: { create: false }
 
     extraPorts:
       - name: "otlp-grpc"
@@ -1247,7 +1244,7 @@ grafana-agent:
             name: kubernetes-monitoring-telemetry
 
   # Skip installation of the Grafana Agent CRDs, since we don't use them in this chart
-  crds: {create: false}
+  crds: { create: false }
 
 # Settings for the Grafana Agent deployment that gathers Cluster events.
 # You can use this sections to make modifications to the Grafana Agent deployment.
@@ -1256,16 +1253,16 @@ grafana-agent:
 grafana-agent-events:
   agent:
     # This chart is creating the configuration, so the grafana-agent chart does not need to.
-    configMap: {create: true}
+    configMap: { create: true }
 
   controller:
     type: deployment
-    replicas: 1  # Only one replica should be used, otherwise multiple copies of cluster events might get sent to Loki.
+    replicas: 1 # Only one replica should be used, otherwise multiple copies of cluster events might get sent to Loki.
     nodeSelector:
       kubernetes.io/os: linux
 
   # Skip installation of the Grafana Agent CRDs, since we don't use them in this chart
-  crds: {create: false}
+  crds: { create: false }
 
 # Settings for the Grafana Agent deployment that gathers pod logs.
 # You can use this sections to make modifications to the Grafana Agent deployment.
@@ -1274,10 +1271,10 @@ grafana-agent-events:
 grafana-agent-logs:
   agent:
     # This chart is creating the configuration, so the grafana-agent chart does not need to.
-    configMap: {create: false}
+    configMap: { create: false }
 
     # Enable clustering by default to make it simpler when using API-based log gathering.
-    clustering: {enabled: true}
+    clustering: { enabled: true }
 
     mounts:
       # Mount /var/log from the host into the container for log collection.
@@ -1296,8 +1293,7 @@ grafana-agent-logs:
         operator: Exists
 
   # Skip installation of the Grafana Agent CRDs, since we don't use them in this chart
-  crds: {create: false}
-
+  crds: { create: false }
 
 # Settings for the Grafana Agent deployment that gathers profiles.
 # You can use this sections to make modifications to the Grafana Agent deployment.
@@ -1306,10 +1302,10 @@ grafana-agent-logs:
 grafana-agent-profiles:
   agent:
     # This chart is creating the configuration, so the grafana-agent chart does not need to.
-    configMap: {create: false}
+    configMap: { create: false }
 
     # Disabling clustering because each instance will gather profiles for the workloads on the same node.
-    clustering: {enabled: false}
+    clustering: { enabled: false }
 
     securityContext:
       privileged: true
@@ -1327,7 +1323,7 @@ grafana-agent-profiles:
         operator: Exists
 
   # Skip installation of the Grafana Agent CRDs, since we don't use them in this chart
-  crds: {create: false}
+  crds: { create: false }
 
 # -- Deploy additional manifest objects
 extraObjects: []
