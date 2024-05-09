@@ -1304,7 +1304,7 @@ entries:
         repository: https://cloudforet-io.github.io/charts
         version: '>=1.0.0'
     description: A Helm chart for SpaceONE
-    digest: 5dd15eda71802fda3786c796ae57f010c8f6024e3ee87d89135d05dbde73e48a
+    digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
     home: https://www.spaceone.org
     name: spaceone
     type: application
