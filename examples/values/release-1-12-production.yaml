@@ -1,0 +1,359 @@
+#################################
+# Cloudforet Verion: 1.12.X
+# DB: MongoDB Atlas
+#################################
+
+
+########################
+# Disable
+# - marketplace-assets
+#######################
+#mongodb:
+#  enabled: false
+
+marketplace-assets:
+  enabled: false
+
+console:
+  production_json:
+    DOMAIN_NAME_REF: hostname
+    CONSOLE_API:
+      ENDPOINT: https://console-v1.api.example.com
+    CONSOLE_API_V2:
+      ENDPOINT: https://console-v2.api.example.com
+    DOMAIN_IMAGE:
+      CI_LOGO: https://raw.githubusercontent.com/cloudforet-io/artwork/main/logo/symbol/Cloudforet_symbol--dark-navy.svg
+      CI_TEXT_WITH_TYPE: https://raw.githubusercontent.com/cloudforet-io/artwork/main/logo/wordmark/Cloudforet_wordmark--primary.svg
+      SIGN_IN: https://raw.githubusercontent.com/cloudforet-io/artwork/main/illustrations/happy-new-year-2024.png
+      CI_TEXT: https://raw.githubusercontent.com/cloudforet-io/artwork/main/logo/wordmark/Cloudforet_wordmark--primary.svg
+    GTAG_ID: G-XXXXXXXXXX
+  volumeMounts:
+    application:
+      - name: favicon
+        mountPath: /var/www/title.txt
+        subPath: title.txt
+        readOnly: true
+      - name: favicon-img
+        mountPath: /var/www/favicon.ico
+        subPath: favicon.ico
+        readOnly: true
+
+  volumes:
+    - name: favicon
+      configMap:
+        name: favicon
+    - name: favicon-img
+      configMap:
+        name: favicon-img
+    - name: timezone
+      hostPath:
+        path: /usr/share/zoneinfo/Asia/Seoul
+    - name: log-volume
+      emptyDir: {}
+
+board:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-board
+        read_preference: PRIMARY
+
+config:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-config
+        read_preference: PRIMARY
+
+cost-analysis:
+  enabled: true
+  scheduler: true
+  worker: true
+  replicas_worker: 2
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-cost-analysis
+        read_preference: PRIMARY
+  application_scheduler:
+    DATABASES:
+      default:
+        db: v1-cost-analysis
+        read_preference: PRIMARY
+  application_worker:
+    DATABASES:
+      default:
+        db: v1-cost-analysis
+        read_preference: PRIMARY
+
+
+
+dashboard:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-dashboard
+        read_preference: PRIMARY
+
+file-manager:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-file-manager
+        read_preference: PRIMARY
+
+
+identity:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-identity   
+        read_preference: PRIMARY
+    CONNECTORS:
+      SMTPConnector:
+        host: smtp.gmail.com                  # Change    
+        port: 587                             # Change
+        user: user@gmail.com                  # Change
+        password: GMAIL_SMTP_PASSWORD         # Change
+        from_email: user@gmail.com            # Change          
+    EMAIL_CONSOLE_DOMAIN: https://{domain_name}.example.com             # Change
+    EMAIL_SERVICE_NAME: "CLOUDFORET"                                    # Change
+    RESET_PASSWORD_TYPE: PASSWORD
+
+  volumeMounts:
+    application_grpc: 
+      - name: email-template
+        mountPath: /usr/local/lib/python3.8/site-packages/spaceone_identity-1.12.4-py3.8.egg/spaceone/identity/template
+        readOnly: true
+
+  volumes:
+    - name: email-template
+      configMap:
+        name: email-template-configmap
+    - name: timezone
+      hostPath:
+        path: /usr/share/zoneinfo/Asia/Seoul
+    - name: log-volume
+      emptyDir: {}
+
+
+inventory:
+  replicas: 2
+  replicas_worker: 2
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-inventory  
+        read_preference: PRIMARY
+  application_scheduler:
+    DATABASES:
+      default:
+        db: v1-inventory  
+        read_preference: PRIMARY
+  application_worker:
+    DATABASES:
+      default:
+        db: v1-inventory  
+        read_preference: PRIMARY
+
+
+monitoring:
+  enabled: true
+  scheduler: true
+  worker: true
+  rest: true
+
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-monitoring
+        read_preference: PRIMARY
+        read_preference: PRIMARY
+    INSTALLED_DATA_SOURCE_PLUGINS:
+      - name: AWS CloudWatch
+        plugin_info:
+          plugin_id: plugin-aws-cloudwatch-mon-datasource
+          provider: aws
+      - name: Azure Monitor
+        plugin_info:
+          plugin_id: plugin-azure-monitor-mon-datasource
+          provider: azure
+      - name: Google Cloud Monitoring
+        plugin_info:
+          plugin_id: plugin-google-stackdriver-mon-datasource
+          provider: google_cloud
+      - name: AWS CloudTrail
+        plugin_info:
+          plugin_id: plugin-aws-cloudtrail-mon-datasource
+          provider: aws
+      - name: Azure Activity Log
+        plugin_info:
+          plugin_id: plugin-azure-activity-log-mon-datasource
+          provider: azure
+    WEBHOOK_DOMAIN: https://webhook.api.example.com
+
+  application_scheduler:
+    DATABASES:
+      default:
+        db: v1-monitoring
+        read_preference: PRIMARY
+
+  application_worker:
+    DATABASES:
+      default:
+        db: v1-monitoring
+        read_preference: PRIMARY
+
+  application_rest:
+    DATABASES:
+      default:
+        db: v1-monitoring
+        read_preference: PRIMARY
+
+
+notification:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-notification
+        read_preference: PRIMARY
+    DEFAULT_QUOTA:
+      plugin-ms-teams-noti-protocol:
+        month: -1
+        day: -1
+      plugin-slack-noti-protocol:
+        month: -1
+        day: -1
+      plugin-telegram-noti-protocol:
+        month: -1
+        day: -1
+    INSTALLED_PROTOCOL_PLUGINS:
+      - name: MS Teams
+        plugin_info:
+          plugin_id: plugin-ms-teams-noti-protocol
+      - name: Slack
+        plugin_info:
+          plugin_id: plugin-slack-noti-protocol
+          options: { }
+          schema: slack_webhook
+      - name: Telegram
+        plugin_info:
+          plugin_id: plugin-telegram-noti-protocol
+          options: { }
+          schema: telegram_auth_token
+  application_scheduler:
+    DATABASES:
+      default:
+        db: v1-notification
+        read_preference: PRIMARY
+  application_worker:
+    DATABASES:
+      default:
+        db: v1-notification
+        read_preference: PRIMARY
+
+
+
+plugin:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-plugin  
+        read_preference: PRIMARY
+  application_scheduler:
+    DATABASES:
+      default:
+        db: v1-plugin  
+        read_preference: PRIMARY
+  application_worker:
+    DATABASES:
+      default:
+        db: v1-plugin  
+        read_preference: PRIMARY
+
+
+
+repository:
+  enabled: true
+  application_grpc:
+    MANAGED_PLUGIN_IMAGE_PREFIX: cloudforet
+    DATABASES:
+      default:
+        db: v1-repository  
+        read_preference: PRIMARY
+
+###############################
+# Update DB connections
+###############################
+secret:
+  enabled: true
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-secret
+        read_preference: PRIMARY
+    BACKEND: MongoDBConnector
+    CONNECTORS:
+      MongoDBConnector:
+        host: mongodb+srv://cluster0.example.mongodb.net		# Change the endpoint
+        username: cloudforet-dbuser				# Change db username
+        password: MONGODB_ATLAS_PASSWORD					# Change db password
+
+statistics:
+  application_grpc:
+    DATABASES:
+      default:
+        db: v1-statistics  
+        read_preference: PRIMARY
+  application_scheduler:
+    DATABASES:
+      default:
+        db: v1-statistics  
+        read_preference: PRIMARY
+  application_worker:
+    DATABASES:
+      default:
+        db: v1-statistics  
+        read_preference: PRIMARY
+
+supervisor:
+  enabled: true
+  image:
+    name: cloudforet/supervisor
+    version: 1.12.0
+  application_scheduler:
+    NAME: root
+    HOSTNAME: spaceone-plugin.svc.cluster.local
+    BACKEND: KubernetesConnector
+    CONNECTORS:
+      RepositoryConnector:
+        endpoint:
+          v1: grpc://repository:50051
+      PluginConnector:
+        endpoint:
+          v1: grpc://plugin:50051
+      KubernetesConnector:
+        namespace: cloudforet-plugin
+        start_port: 50051
+        end_port: 50052
+        headless: true
+        replica:
+          inventory.Collector: 2
+          monitoring.DataSource: 1
+          cost_analysis.DataSource: 2
+
+#############################################
+# Update
+# - TOKEN
+# - DB connections
+############################################
+global:
+  namespace: cloudforet
+  supervisor_namespace: cloudforet
+  shared_conf:
+    TOKEN: eyJhbGciOiJAS__CHANGE_TOKEN________________________________          # Change the token
+    DATABASES:
+      default:
+        host: mongodb+srv://cluster0.example.mongodb.net				# change the endpoint
+        username: cloudforet-dbuser						# change db user
+        password: MONGODB_ATLAS_PASSWORD							# change db password
