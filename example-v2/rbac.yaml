@@ -1,0 +1,35 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: supervisor-plugin-control-role
+  namespace: cloudforet-plugin 
+rules:
+- apiGroups:
+  - "*"
+  resources:
+  - replicaSets
+  - pods
+  - deployments
+  - services
+  - endpoints
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: supervisor-role-binding
+  namespace: cloudforet-plugin 
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: supervisor-plugin-control-role
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: cloudforet
