@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/board-1.3.12/board-1.3.12.tgz
     version: 1.3.12
+  cfctl:
+  - apiVersion: v2
+    appVersion: 1.0.7
+    created: "2024-12-19T04:28:21.099076337Z"
+    description: A cfctl chart for Kubernetes
+    digest: 320bff89b5e7c2ce82f26fa9e0aa77ad33a1abe48c54ad52f91ba733b862dbdf
+    name: cfctl
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/cfctl-1.0.0/cfctl-1.0.0.tgz
+    version: 1.0.0
   config:
   - apiVersion: v2
     appVersion: 1.x.y
@@ -1477,4 +1488,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2024-11-29T17:34:10.23008758Z"
+generated: "2024-12-19T04:28:21.099170483Z"
