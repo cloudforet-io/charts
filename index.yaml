@@ -129,6 +129,16 @@ entries:
   cost-analysis:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2025-04-17T08:20:40.070147429Z"
+    description: SpaceONE Cost Analysis Helm chart for Kubernetes
+    digest: 682bf0d88fc03cb69d866c209746a910149d79940171c76da516a826956a2344
+    name: cost-analysis
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/cost-analysis-1.4.2/cost-analysis-1.4.2.tgz
+    version: 1.4.2
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2024-09-24T07:23:59.444788941Z"
     description: SpaceONE Cost Analysis Helm chart for Kubernetes
     digest: 515b1f0edfdfaf20125f9385dba25354e3ce6d51093c084eb1fbad4ccc2a6c20
@@ -1916,4 +1926,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-03-20T07:10:07.762192809Z"
+generated: "2025-04-17T08:20:40.070403428Z"
