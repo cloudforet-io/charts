@@ -315,7 +315,7 @@ entries:
   k8s-monitoring:
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2024-06-19T06:07:38.432793337Z"
+    created: "2025-04-29T02:15:23.930529517Z"
     dependencies:
     - name: grafana-agent
       repository: https://grafana.github.io/helm-charts
@@ -357,7 +357,7 @@ entries:
       version: 1.35.0
     description: A Helm chart for gathering, scraping, and forwarding Kubernetes telemetry
       data to a Grafana Stack.
-    digest: e24aef84d621dee059b30a5231d3658a97fe216b2a3fb49a1d1f2c1c60814459
+    digest: 000f3c092e6a1b5c7ca2e9b312c8e65acc071dd81323fae7a321bc5949bfaf3d
     icon: https://raw.githubusercontent.com/grafana/grafana/main/public/img/grafana_icon.svg
     maintainers:
     - email: pete.wall@grafana.com
@@ -1926,4 +1926,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-04-17T08:20:40.070403428Z"
+generated: "2025-04-29T02:15:23.896221731Z"
