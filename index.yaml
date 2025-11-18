@@ -542,16 +542,6 @@ entries:
   notification:
   - apiVersion: v2
     appVersion: 1.x.y
-    created: "2025-11-18T05:26:40.307739129Z"
-    description: SpaceONE notification Helm chart for Kubernetes
-    digest: ac257c919f80adbd8763cbd0630201d45e9b76cffc614db598272421bed38952
-    name: notification
-    type: application
-    urls:
-    - https://github.com/cloudforet-io/charts/releases/download/notification-1.3.17/notification-1.3.17.tgz
-    version: 1.3.17
-  - apiVersion: v2
-    appVersion: 1.x.y
     created: "2024-04-08T07:49:11.829894838Z"
     description: SpaceONE notification Helm chart for Kubernetes
     digest: cda78006f54ed623ec16958a3ed693746bacaee3e86f5675b5b40cacf80fbc59
@@ -583,6 +573,16 @@ entries:
     - https://github.com/cloudforet-io/charts/releases/download/repository-1.3.11/repository-1.3.11.tgz
     version: 1.3.11
   search:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2025-11-18T05:27:09.402409651Z"
+    description: SpaceONE search Helm chart for Kubernetes
+    digest: 32ee349e90f1655f108e50d4352590b2202fcfbacd1f64578c46838490d24572
+    name: search
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/search-1.0.2/search-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: 1.x.y
     created: "2024-04-08T07:17:11.471608648Z"
@@ -1956,4 +1956,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-11-18T05:26:40.308103491Z"
+generated: "2025-11-18T05:27:09.40259129Z"
