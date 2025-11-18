@@ -171,6 +171,16 @@ entries:
   file-manager:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2025-11-18T05:14:15.335946911Z"
+    description: SpaceONE File Manager Helm chart for Kubernetes
+    digest: 949ab6abfbfc761ed6a4d0b24b7b06119c4a71eefc915b10ea0735f744094236
+    name: file-manager
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/file-manager-1.3.12/file-manager-1.3.12.tgz
+    version: 1.3.12
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2025-03-20T01:34:21.409126818Z"
     description: SpaceONE File Manager Helm chart for Kubernetes
     digest: 9c818227ecef012a17d12ec5b064059c5dbd6e77d4182cb3d2629a0976bcdf42
@@ -1926,4 +1936,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-08-25T01:48:41.652299509Z"
+generated: "2025-11-18T05:14:15.336129202Z"
