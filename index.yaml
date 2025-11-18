@@ -3,6 +3,16 @@ entries:
   board:
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2025-11-18T05:27:24.83350877Z"
+    description: SpaceONE board Helm chart for Kubernetes
+    digest: 8d7d8b8aa41d34c014231ab080bcb59a59e4ad2293d76549f8f920683221fe94
+    name: board
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/board-1.3.13/board-1.3.13.tgz
+    version: 1.3.13
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2024-04-08T07:50:27.417895775Z"
     description: SpaceONE board Helm chart for Kubernetes
     digest: 019c97bb9bc88707633dd681ee912831173543826eb0876a9486ea71d53d1ebc
@@ -573,16 +583,6 @@ entries:
     - https://github.com/cloudforet-io/charts/releases/download/repository-1.3.11/repository-1.3.11.tgz
     version: 1.3.11
   search:
-  - apiVersion: v2
-    appVersion: 1.x.y
-    created: "2025-11-18T05:27:09.402409651Z"
-    description: SpaceONE search Helm chart for Kubernetes
-    digest: 32ee349e90f1655f108e50d4352590b2202fcfbacd1f64578c46838490d24572
-    name: search
-    type: application
-    urls:
-    - https://github.com/cloudforet-io/charts/releases/download/search-1.0.2/search-1.0.2.tgz
-    version: 1.0.2
   - apiVersion: v2
     appVersion: 1.x.y
     created: "2024-04-08T07:17:11.471608648Z"
@@ -1956,4 +1956,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-11-18T05:27:09.40259129Z"
+generated: "2025-11-18T05:27:24.833684449Z"
