@@ -35,16 +35,6 @@ entries:
   config:
   - apiVersion: v2
     appVersion: 1.x.y
-    created: "2025-11-18T05:26:23.662116085Z"
-    description: SpaceONE config Helm chart for Kubernetes
-    digest: 35711884bf6e82c6e569ad030736c1976ec1f68e6f3951de2b545b41e79773c8
-    name: config
-    type: application
-    urls:
-    - https://github.com/cloudforet-io/charts/releases/download/config-1.3.11/config-1.3.11.tgz
-    version: 1.3.11
-  - apiVersion: v2
-    appVersion: 1.x.y
     created: "2024-04-08T07:39:38.555960465Z"
     description: SpaceONE config Helm chart for Kubernetes
     digest: 17cbea4b6c2c19ad78ed1a950bec00443a597b1a15f6a187333df4e50275e15d
@@ -550,6 +540,16 @@ entries:
     - https://github.com/cloudforet-io/charts/releases/download/monitoring-1.3.24/monitoring-1.3.24.tgz
     version: 1.3.24
   notification:
+  - apiVersion: v2
+    appVersion: 1.x.y
+    created: "2025-11-18T05:26:40.307739129Z"
+    description: SpaceONE notification Helm chart for Kubernetes
+    digest: ac257c919f80adbd8763cbd0630201d45e9b76cffc614db598272421bed38952
+    name: notification
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/notification-1.3.17/notification-1.3.17.tgz
+    version: 1.3.17
   - apiVersion: v2
     appVersion: 1.x.y
     created: "2024-04-08T07:49:11.829894838Z"
@@ -1956,4 +1956,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-11-18T05:26:23.662304176Z"
+generated: "2025-11-18T05:26:40.308103491Z"
