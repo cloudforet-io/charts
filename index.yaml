@@ -696,6 +696,16 @@ entries:
     version: 1.3.14
   - apiVersion: v2
     appVersion: 1.x.y
+    created: "2025-11-19T10:55:49.090099482Z"
+    description: SpaceONE secret Helm chart for Kubernetes
+    digest: 98273f59b7798d063fd6e05e575b4f60faecb0e7b3ecf7721dac33ff89b96c92
+    name: secret
+    type: application
+    urls:
+    - https://github.com/cloudforet-io/charts/releases/download/secret-1.3.14-test/secret-1.3.14-test.tgz
+    version: 1.3.14-test
+  - apiVersion: v2
+    appVersion: 1.x.y
     created: "2024-04-08T07:32:46.163161651Z"
     description: SpaceONE secret Helm chart for Kubernetes
     digest: e21877e27c7adfc180f87d2135cc22daafaa0326feab68e263d1aa20836f6af8
@@ -2076,4 +2086,4 @@ entries:
     urls:
     - https://github.com/cloudforet-io/charts/releases/download/supervisor-1.1.15/supervisor-1.1.15.tgz
     version: 1.1.15
-generated: "2025-11-18T06:00:23.645954827Z"
+generated: "2025-11-19T10:55:49.090323731Z"
